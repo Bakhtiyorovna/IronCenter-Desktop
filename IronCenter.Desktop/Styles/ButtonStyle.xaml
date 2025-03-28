@@ -1,0 +1,324 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                    xmlns:fa="http://schemas.fontawesome.io/icons/">
+
+    <Style x:Key="MinimizedButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="MinB"
+                           Background="#021643"
+                           CornerRadius="10"
+                           >
+                        <Path Fill="#2C5582" Margin="3"
+                             Data="{DynamicResource minimized}" Width="15" Stretch="Uniform"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MinB" Property="Background" Value="#032A54"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="MinB" Property="Background" Value="#021643"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="MinB" Property="Background" Value="#032A54"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+ 
+    <Style x:Key="MaximizedButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="MaxB"
+                           Background="#021643"
+                           CornerRadius="10">
+                        <Path Fill="#2C5582" Margin="5"
+                             Data="{DynamicResource maximized}" Width="15" Stretch="Uniform"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MaxB" Property="Background" Value="#032A54"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="MaxB" Property="Background" Value="#021643"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="MaxB" Property="Background" Value="#032A54"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="CloseButtun" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="CloseB" 
+                           Background="#021643"
+                           CornerRadius="10">
+                        <Path Fill="#2C5582" Margin="6"
+                             Data="{DynamicResource close}" Width="15" Stretch="Uniform"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="CloseB" Property="Background" Value="#710703"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="CloseB" Property="Background" Value="#021643"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="CloseB" Property="Background" Value="#710703"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="menuButton" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="0">
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="{DynamicResource EventTextColor}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="{DynamicResource EventTextColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="CalkulatorRadioButton" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{DynamicResource DimTextColor}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="0">
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource TextColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource EventTextColor}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{DynamicResource TextColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource EventTextColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="CalRadioButtonLeft" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{DynamicResource DimTextColor}"/>
+        <Setter Property="Background" Value="#CFD9EC"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Margin" Value="0 10 0 10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border Background="{TemplateBinding Background}"  CornerRadius="5" BorderThickness="2" BorderBrush="#569CD6">
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource TextColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource EventTextColor}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{DynamicResource TextColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource EventTextColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="CalRadioButtonRight" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{DynamicResource DimTextColor}"/>
+        <Setter Property="Background" Value="#CFD9EC"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="5" BorderThickness="2" BorderBrush="#569CD6">
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource TextColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource EventTextColor}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{DynamicResource TextColor}"/>
+                <Setter Property="Foreground" Value="{DynamicResource EventTextColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="AddButton" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="230"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="sgnBr" CornerRadius="7"
+                          BorderThickness="2"
+                          BorderBrush="{DynamicResource TextColor}">
+                        <!-- Spinner -->
+                        <StackPanel Orientation="Horizontal">
+                            
+                            <Label FontSize="16"
+                             Margin="20 0"
+                             x:Name="sgn_label"
+                             FontFamily="send-series"
+                             FontWeight="SemiBold"
+                             Foreground="{DynamicResource TextColor}"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             Content="{TemplateBinding Content}"
+                             />
+                        </StackPanel>
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="#032B4F"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#022557"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="white"/>
+                           
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="sgnBr" Property="Background" Value="{DynamicResource ComponentColor}"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="{DynamicResource TextColor}"/>
+                          
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#022557"/>
+                            <!--<Setter TargetName="sgnBr"  Property="Visibility" Value="Collapsed"/>-->
+                            <Setter TargetName="sgn_label" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="sgnBr" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#0E72C8"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CalSolveButton" TargetType="{x:Type Button}">
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="sgnBr" CornerRadius="7"
+                       BorderThickness="2"
+                       BorderBrush="{DynamicResource TextColor}">
+                        <!-- Spinner -->
+                        <StackPanel Orientation="Vertical">
+
+                            <Label FontSize="16"
+                          Margin="5"
+                          x:Name="sgn_label"
+                          FontFamily="send-series"
+                          FontWeight="SemiBold"
+                          Foreground="{DynamicResource TextColor}"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Content="{TemplateBinding Content}"
+                          />
+                        </StackPanel>
+                      
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#022557"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="white"/>
+
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="sgnBr" Property="Background" Value="{DynamicResource ComponentColor}"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="{DynamicResource TextColor}"/>
+
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#022557"/>
+                            <!--<Setter TargetName="sgnBr"  Property="Visibility" Value="Collapsed"/>-->
+                            <Setter TargetName="sgn_label" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="sgnBr" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#0E72C8"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="menuButtonIcon" TargetType="icon:PackIconMaterial">
+        <Setter Property="Margin" Value="20 0 0 0"/>
+        <Setter Property="Width" Value="18"/>
+        <Setter Property="Height" Value="18"/>
+        <Setter Property="Foreground" Value="{Binding Path=Foreground,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RadioButton}}}"/>
+    </Style>
+</ResourceDictionary>

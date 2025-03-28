@@ -1,0 +1,101 @@
+[
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 10.0,
+    "valueTwo": 0.0,
+    "valueThree": 2.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 1.233,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 10.0,
+    "valueTwo": 32.0,
+    "valueThree": 0.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 0.0,
+    "ResultvalueTwo": 51.903
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 9.0,
+    "valueTwo": 32.0,
+    "valueThree": 0.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 0.0,
+    "ResultvalueTwo": 64.077
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 9.0,
+    "valueTwo": 0.0,
+    "valueThree": 87556.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 43725.066,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 90.0,
+    "valueTwo": 0.0,
+    "valueThree": 87556.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 4372506.559,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 90.0,
+    "valueTwo": 0.0,
+    "valueThree": 87556.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 4372506.559,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 90.0,
+    "valueTwo": 0.0,
+    "valueThree": 87556.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 4372506.559,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 90.0,
+    "valueTwo": 0.0,
+    "valueThree": 87556.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 4372506.559,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 90.0,
+    "valueTwo": 0.0,
+    "valueThree": 87556.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 4372506.559,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 90.0,
+    "valueTwo": 0.0,
+    "valueThree": 87.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 4344.74,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 90.0,
+    "valueTwo": 86.0,
+    "valueThree": 0.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 0.0,
+    "ResultvalueTwo": 1.722
+  }
+]

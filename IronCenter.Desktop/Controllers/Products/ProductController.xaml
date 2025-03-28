@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="IronCenter.Desktop.Controllers.ProductController"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IronCenter.Desktop.Controllers"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="500"
+             Background="Transparent">
+    <Grid>
+        <Border  
+             Background="{DynamicResource PagesBackgraundColor}"
+             Opacity="0.2"
+             CornerRadius="15"
+             Height="125"
+             Width="420"
+             Margin="0 10 10 0"
+             BorderThickness="0 0 3 2"
+             BorderBrush="white">
+             
+        </Border>
+        <Border
+            Width="2"
+            Height="90"
+            HorizontalAlignment="Left"
+            Margin="30 0 0 0"
+            Background="{DynamicResource EventTextColor}"
+            CornerRadius="2">
+            
+        </Border>
+        <TextBlock Text="Armatura 17*30"
+                   Margin="60 30"
+                   Height="20"
+                   FontSize="20"
+                   FontFamily="arial"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource TextColor}"></TextBlock>
+        <TextBlock Text="15.07.2024"
+                   Foreground="#AAAF23"
+                   Margin="270 30 0 0"
+                   FontSize="16">
+        </TextBlock>
+        <Grid Height="60"
+              Width="300"
+              Margin="60 30 0 0" 
+              HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Text="1kg"
+                       TextAlignment="Left"
+                       FontSize="16"
+                       Foreground="{DynamicResource DimTextColor}"
+                       VerticalAlignment="Center"></TextBlock>
+            <TextBlock Grid.Row="1"
+              Grid.Column="0"
+              Text="1m"
+              TextAlignment="Left"
+              FontSize="16"
+              Foreground="{DynamicResource DimTextColor}"
+                       VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="0"
+            Grid.Column="1"
+            Text="1,7 USD"
+            TextAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16"
+            Foreground="Green">
+
+            </TextBlock>
+            <TextBlock Grid.Row="0"
+                       Grid.Column="2"
+                       Text="20000 UZS"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="16"
+                       Foreground="Green">
+                
+            </TextBlock>
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Text="1,7 USD"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="16"
+                       Foreground="Green">
+
+            </TextBlock>
+            <TextBlock Grid.Row="1"
+            Grid.Column="2"
+            Text="20000 UZS"
+            TextAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16"
+            Foreground="Green">
+
+            </TextBlock>
+          
+
+        </Grid>
+    </Grid>
+</UserControl>

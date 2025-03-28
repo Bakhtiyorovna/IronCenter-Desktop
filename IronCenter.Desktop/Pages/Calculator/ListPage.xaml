@@ -1,0 +1,167 @@
+﻿<Page x:Class="IronCenter.Desktop.Pages.Calculator.ListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IronCenter.Desktop.Pages.Calculator"
+      mc:Ignorable="d" 
+      Title="ListPage"
+    d:DesignHeight="800" d:DesignWidth="600"
+   >
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="0" 
+           Grid.ColumnSpan="2"
+           Grid.Row="0"
+    Margin="0">
+                <Border CornerRadius="0 15 0 0" 
+          Background="#1C4F82">
+
+                </Border>
+                <TextBlock 
+      x:Name="Title_Txb"
+          Text="List yuzasi va og'irligini hisoblash"
+          FontSize="20"
+          Foreground="{DynamicResource TextColor}"
+          TextAlignment="Center"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+  >
+
+                </TextBlock>
+            </Grid>
+
+            <Grid Grid.Column="0"
+           Grid.Row="1"
+            Background="#FFFFFF"
+            Height="800">
+                <Image Source="D:\Proekts\DotNet\IronCenter-Desktop\IronCenter.Desktop\Assets\Images\AssortimentImages\ListPicture.png" 
+                VerticalAlignment="Top"></Image>
+
+            </Grid>
+            <StackPanel Grid.Column="1"
+                 Grid.Row="1"
+                 Background="#FFFFFF"
+                 Margin="2 0 0 0"
+                 Orientation="Vertical">
+              
+
+
+               
+                        <Label Content="list kengligi a"
+             Margin="10 10 10 0"
+             Foreground="{DynamicResource DimTextColor}"
+             FontSize="16"></Label>
+                        <Grid>
+                            <TextBox x:Name="aTxt" Style="{DynamicResource CalculatorImputTextBox}">
+
+                            </TextBox>
+                            <Label Content="mm"
+                    Foreground="{DynamicResource DimTextColor}"
+                    FontSize="16"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Margin="0 0 15 0">
+                            </Label>
+                        </Grid>
+                 
+
+                        <Label
+                Content="list balandligi b"
+     Margin="10 10 10 0"
+     Foreground="{DynamicResource DimTextColor}"
+     FontSize="16"></Label>
+                <Grid>
+                    <TextBox x:Name="bTxt" Style="{DynamicResource CalculatorImputTextBox}"></TextBox>
+                    <Label
+                 Content="mm"
+      Foreground="{DynamicResource DimTextColor}"
+      FontSize="16"
+      VerticalAlignment="Center"
+      HorizontalAlignment="Right"
+      Margin="0 0 15 0"></Label>
+                </Grid>
+
+
+
+
+
+
+
+                <Label
+           Content="qalinlik t"
+Margin="10 10 10 0"
+Foreground="{DynamicResource DimTextColor}"
+FontSize="16"></Label>
+                <Grid>
+                    <TextBox x:Name="tTxt" Style="{DynamicResource CalculatorImputTextBox}"></TextBox>
+                    <Label 
+            Content="mm"
+ Foreground="{DynamicResource DimTextColor}"
+ FontSize="16"
+ VerticalAlignment="Center"
+ HorizontalAlignment="Right"
+ Margin="0 0 15 0"></Label>
+                </Grid>
+
+                <Label 
+                Content="miqdor"
+     Margin="10 10 10 0"
+     Foreground="{DynamicResource DimTextColor}"
+     FontSize="16"></Label>
+                <Grid>
+                    <TextBox x:Name="miqdorTxt" Style="{DynamicResource CalculatorImputTextBox}"></TextBox>
+                    <Label x:Name="Label_birlik"
+                 Content="dona"
+      Foreground="{DynamicResource DimTextColor}"
+      FontSize="16"
+      VerticalAlignment="Center"
+      HorizontalAlignment="Right"
+      Margin="0 0 15 0"></Label>
+                </Grid>
+
+                <Button
+             Click="ResultButton_Click"
+   Height="40"
+   Margin="10 20"
+   Content="Hisoblash"
+   Style="{DynamicResource CalSolveButton}"
+   VerticalAlignment="Bottom"
+  >
+
+                </Button>
+                <Label 
+             x:Name="YuzaLbl"
+             Content="Yuza: 0 m2"
+     Foreground="{DynamicResource DimTextColor}"
+     FontSize="20"
+     VerticalAlignment="Center"
+     HorizontalAlignment="Center"
+    >
+
+                </Label>
+                <Label 
+         x:Name="OgirlikLbl"
+         Content="Og'irlik: 0 kg"
+ Foreground="{DynamicResource DimTextColor}"
+ FontSize="20"
+ VerticalAlignment="Center"
+ HorizontalAlignment="Center"
+>
+
+                </Label>
+            </StackPanel>
+        </Grid>
+
+
+    </Grid>
+</Page>

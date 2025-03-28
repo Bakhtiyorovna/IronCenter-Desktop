@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="CalculatorImputTextBox" TargetType="TextBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#446583"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Margin" Value="10 0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBoxBase">
+                    <Border x:Name="border"
+                       CornerRadius="5"
+                       Background="Transparent"
+                            BorderThickness="2"
+                            BorderBrush="#569CD6"
+                       SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                 Focusable="False"
+                                 HorizontalScrollBarVisibility="Hidden"
+                                 VerticalScrollBarVisibility="Hidden">
+                        </ScrollViewer>
+
+                    </Border>
+
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+
+    </Style>
+</ResourceDictionary>

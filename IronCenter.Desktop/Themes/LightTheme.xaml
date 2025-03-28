@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="PrimaryBackground" Color="#030324"/>
+    <SolidColorBrush x:Key="SecondaryBackground" Color="#fff"/>
+    <SolidColorBrush x:Key="TextColor" Color="#9FC3E4"/>
+    <SolidColorBrush x:Key="MinTextColor" Color="#096183"/>
+    <SolidColorBrush x:Key="EventTextColor" Color="#0E72C8"/>
+    <SolidColorBrush x:Key="PagesBackgraundColor" Color="#014B8C"/>
+    <SolidColorBrush x:Key="ComponentColor" Color="#032B4F"/>
+    <SolidColorBrush x:Key="DimTextColor" Color="#728CA4"/>
+
+    <SolidColorBrush x:Key="PrimaryIconColor" Color="#8F8F8F"/>
+    <SolidColorBrush x:Key="SelectedBackground" Color="#209240"/>
+    <SolidColorBrush x:Key="FourthBackground" Color="#209240"/>
+    <SolidColorBrush x:Key="FifthBackground" Color="#EEEDEF"/>
+    <SolidColorBrush x:Key="SixthBackground" Color="#EBEBEB"/>
+
+    <SolidColorBrush x:Key="PrimaryBorderColor" Color="#209240"/>
+    <SolidColorBrush x:Key="SecondaryBorderColor" Color="#fff"/>
+    <SolidColorBrush x:Key="SelectedBorderColor" Color="#8F8F8F"/> 
+    <SolidColorBrush x:Key="PrimarytextColor" Color="#fff"/>
+    <SolidColorBrush x:Key="Nopassword" Color="#FF0000"/>
+    <SolidColorBrush x:Key="slowpassword" Color="#FF8000"/>
+    <SolidColorBrush x:Key="Midpassword" Color="#FFFF00"/>
+    <SolidColorBrush x:Key="Strongpassword" Color="#00E100"/>
+    <SolidColorBrush x:Key="SecondaryTextColor" Color="#Fb7154"/>
+    <SolidColorBrush x:Key="SelectedTextColor" Color="#000"/>
+    <SolidColorBrush x:Key="FifthTextColor" Color="#083353"/>
+</ResourceDictionary>
