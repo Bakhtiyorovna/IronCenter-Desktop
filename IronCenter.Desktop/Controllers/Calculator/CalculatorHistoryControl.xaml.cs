@@ -46,6 +46,19 @@ namespace IronCenter.Desktop.Controllers.Calculator
                     ResultTitle.Text = "Og'irlik: " + calculatorHistory.ResultvalueOne;
                 }
             }
+            else if(assortimentName=="Dumaloq quvur")
+            {
+                if (calculatorHistory.valueThree == 0)
+                {
+                    Title.Text = assortimentName + " D=" + calculatorHistory.valueOne + " t=" + calculatorHistory.valueTwo + "Og'irlik= " + calculatorHistory.valueFour;
+                    ResultTitle.Text = "Uzunlik=" + calculatorHistory.ResultvalueOne;
+                }
+                else
+                {
+                    Title.Text = assortimentName + " D=" + calculatorHistory.valueOne + " t=" + calculatorHistory.valueTwo + "Uzunlik= " + calculatorHistory.valueThree;
+                    ResultTitle.Text = "Og'irlik=" + calculatorHistory.ResultvalueOne;
+                }
+            }
 
         }
     }

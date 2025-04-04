@@ -24,12 +24,40 @@ namespace IronCenter.Desktop.Pages.Calculator
     /// </summary>
     public partial class HistoryPage : Page
     {
-
-        public HistoryPage()
+        private Window _mainWindow;
+        string filePath = "D:\\Proekts\\DotNet\\IronCenter-Desktop\\src\\IronCenter.Service\\CalculaturServices\\CalculatorHistoryJson.json";
+        public HistoryPage(Window mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow; // Oynani saqlaymiz
+            Loaded += Page2_Loaded;
+            _mainWindow.StateChanged += MainWindow_StateChanged;
         }
 
+        private void Page2_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateSize();
+        }
+
+        private void MainWindow_StateChanged(object sender, EventArgs e)
+        {
+            UpdateSize();
+        }
+
+        private void UpdateSize()
+        {
+            if (_mainWindow.WindowState == WindowState.Maximized)
+            {
+                this.Width = 748;
+                this.Height = 590;
+            }
+            else
+            {
+                this.Width = 668;
+                this.Height = 520;
+            }
+        }
+    
 
         public async Task Refresh()
         {
@@ -54,6 +82,31 @@ namespace IronCenter.Desktop.Pages.Calculator
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             await Refresh();
+        }
+
+        private void page_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MyPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_mainWindow.WindowState == WindowState.Maximized)
+            {
+                this.Width = 400;
+                this.Height = 400;
+            }
+            else
+            {
+                this.Width = 300;
+                this.Height = 300;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllText(filePath, "[]");
+            wrpCourses.Children.Clear();
         }
     }
 }

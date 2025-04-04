@@ -20,9 +20,11 @@ namespace IronCenter.Desktop.Pages.Calculator
     /// </summary>
     public partial class CalculatorPage : Page
     {
-        public CalculatorPage()
+        private Window _mainWindow;
+        public CalculatorPage(Window mainWindow)
         {
             InitializeComponent();
+            _mainWindow= mainWindow;
         }
 
         private void Radiobutton1_Click(object sender, RoutedEventArgs e)
@@ -58,7 +60,7 @@ namespace IronCenter.Desktop.Pages.Calculator
 
         private void Radiobutton6_Click(object sender, RoutedEventArgs e)
         {
-            HistoryPage historyPage = new HistoryPage();
+            HistoryPage historyPage = new HistoryPage(_mainWindow);
             FrameFilter.Content=historyPage;
         }
     }

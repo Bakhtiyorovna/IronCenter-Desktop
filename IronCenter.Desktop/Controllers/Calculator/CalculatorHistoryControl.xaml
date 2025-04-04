@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IronCenter.Desktop.Controllers.Calculator"
              mc:Ignorable="d" 
-             d:DesignHeight="80" d:DesignWidth="600">
-    <Grid Height="80"
+             d:DesignHeight="120" d:DesignWidth="600">
+    <Grid Height="100"
           Width="600">
         <Border Background="AliceBlue"
                 CornerRadius="15"
@@ -17,16 +17,16 @@
         </Border>
         <TextBlock x:Name="Title"
                    Text="To'rtburchak truba:   10*10*2  L=10"
-                   VerticalAlignment="Center"
+                   VerticalAlignment="Top"
                    Margin="20"
                    Foreground="#446583"
                    FontSize="20"></TextBlock>
        
         <TextBlock x:Name="ResultTitle"
                    Text="Og'irlik: 212,232kg"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Center"
-                   Margin="0 0 40 0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   Margin="20 0 40 25"
                    Foreground="#1E1E1E"
                    FontSize="20"
                    >

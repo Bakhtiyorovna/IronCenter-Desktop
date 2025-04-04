@@ -1,5 +1,8 @@
-﻿using System;
+﻿using IronCenter.Service.CalculaturServices;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +31,8 @@ namespace IronCenter.Desktop.Pages.Calculator
         public double density = 0.007848107;
 
         public double result = 0;
+
+        public string filePath = "D:\\Proekts\\DotNet\\IronCenter-Desktop\\src\\IronCenter.Service\\CalculaturServices\\CalculatorHistoryJson.json";
 
         public KruglayaTrubaCalculator()
         {
@@ -70,6 +75,51 @@ namespace IronCenter.Desktop.Pages.Calculator
                 {
                        ResultLbl.Content = "og'irlik: "+Math.Round(result,3)+"kg";
                        ResultLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#728CA4"));
+
+                    try
+                    {
+                        string json = File.ReadAllText(filePath);
+                        List<CalculatorHistory> calculatorHistory = JsonConvert.DeserializeObject<List<CalculatorHistory>>(json);
+                        if (calculatorHistory is null)
+                        {
+                            CalculatorHistory value = new CalculatorHistory();
+                            value.AssortimentName = "Dumaloq quvur";
+                            value.valueOne = d;
+                            value.valueTwo = t;
+                            value.valueThree = info; // uzunlik
+                            value.valueFour = 0;
+                            value.ResultvalueOne = result; // og'irlik
+                            value.ResultvalueTwo = 0;
+
+                            calculatorHistory = new List<CalculatorHistory>();
+                            calculatorHistory.Add(value);
+                            string updatedJson = JsonConvert.SerializeObject(calculatorHistory, Formatting.Indented);
+
+                            File.WriteAllText(filePath, updatedJson);
+                        }
+                        else
+                        {
+                            CalculatorHistory value = new CalculatorHistory();
+                            value.AssortimentName = "Dumaloq quvur";
+                            value.valueOne = d;
+                            value.valueTwo = t;
+                            value.valueThree = info; // uzunlik
+                            value.valueFour = 0;
+                            value.ResultvalueOne = result; // og'irlik
+                            value.ResultvalueTwo = 0;
+
+                            calculatorHistory.Add(value);
+
+                            string updatedJson = JsonConvert.SerializeObject(calculatorHistory, Formatting.Indented);
+
+                            File.WriteAllText(filePath, updatedJson);
+                        }
+
+                    }
+                    catch
+                    {
+                        Title_Txb.Text = "Hisoblash tarixga qo'shilmadi";
+                    }
                 }
                 else
                 {
@@ -85,6 +135,51 @@ namespace IronCenter.Desktop.Pages.Calculator
                 {
                     ResultLbl.Content = "uzunlik: " + Math.Round(result, 3) + "m";
                     ResultLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#728CA4"));
+
+                    try
+                    {
+                        string json = File.ReadAllText(filePath);
+                        List<CalculatorHistory> calculatorHistory = JsonConvert.DeserializeObject<List<CalculatorHistory>>(json);
+                        if (calculatorHistory is null)
+                        {
+                            CalculatorHistory value = new CalculatorHistory();
+                            value.AssortimentName = "Dumaloq quvur";
+                            value.valueOne = d;
+                            value.valueTwo = t;
+                            value.valueThree = 0; 
+                            value.valueFour = info; //ogirlik
+                            value.ResultvalueOne = result; // uzunlik
+                            value.ResultvalueTwo = 0;
+
+                            calculatorHistory = new List<CalculatorHistory>();
+                            calculatorHistory.Add(value);
+                            string updatedJson = JsonConvert.SerializeObject(calculatorHistory, Formatting.Indented);
+
+                            File.WriteAllText(filePath, updatedJson);
+                        }
+                        else
+                        {
+                            CalculatorHistory value = new CalculatorHistory();
+                            value.AssortimentName = "Dumaloq quvur";
+                            value.valueOne = d;
+                            value.valueTwo = t;
+                            value.valueThree = 0; 
+                            value.valueFour = info;
+                            value.ResultvalueOne = result; // uzunlik
+                            value.ResultvalueTwo = 0;
+
+                            calculatorHistory.Add(value);
+
+                            string updatedJson = JsonConvert.SerializeObject(calculatorHistory, Formatting.Indented);
+
+                            File.WriteAllText(filePath, updatedJson);
+                        }
+
+                    }
+                    catch
+                    {
+                        Title_Txb.Text = "Hisoblash tarixga qo'shilmadi";
+                    }
                 }
                 else
                 {

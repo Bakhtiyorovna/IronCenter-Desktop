@@ -94,7 +94,7 @@ namespace IronCenter.Desktop
         {
             Title.Text = " Metall Kalkulator";
 
-            CalculatorPage page = new CalculatorPage();
+            CalculatorPage page = new CalculatorPage(this);
             FrameFilter.Content =(page);
         }
     }

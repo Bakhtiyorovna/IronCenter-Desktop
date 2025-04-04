@@ -98,7 +98,6 @@ namespace IronCenter.Desktop.Pages.Calculator
                             value.ResultvalueOne = Weight;
                             value.ResultvalueTwo = 0;
 
-
                             calculatorHistory = new List<CalculatorHistory>();
                             calculatorHistory.Add(value);
                             string updatedJson = JsonConvert.SerializeObject(calculatorHistory, Formatting.Indented);
@@ -116,9 +115,7 @@ namespace IronCenter.Desktop.Pages.Calculator
                             value.ResultvalueOne = Weight;
                             value.ResultvalueTwo = 0;
 
-
                             calculatorHistory.Add(value);
-
 
                             string updatedJson = JsonConvert.SerializeObject(calculatorHistory, Formatting.Indented);
 
@@ -211,9 +208,6 @@ namespace IronCenter.Desktop.Pages.Calculator
                 ResultLbl.Content = "Malu'motlarni e'tibor bilan kiriting!";
                 ResultLbl.Foreground = new SolidColorBrush(Colors.Red);
             }
-
-
-
         }
     }
 }

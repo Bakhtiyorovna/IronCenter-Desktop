@@ -1,101 +1,83 @@
 [
   {
     "AssortimentName": "Armatura",
+    "valueOne": 33.0,
+    "valueTwo": 0.0,
+    "valueThree": 22.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 147.71,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 33.0,
+    "valueTwo": 0.0,
+    "valueThree": 22.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 147.71,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 33.0,
+    "valueTwo": 0.0,
+    "valueThree": 22.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 147.71,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 33.0,
+    "valueTwo": 44.0,
+    "valueThree": 0.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 0.0,
+    "ResultvalueTwo": 6.553
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 33.0,
+    "valueTwo": 44.0,
+    "valueThree": 0.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 0.0,
+    "ResultvalueTwo": 6.553
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 33.0,
+    "valueTwo": 0.0,
+    "valueThree": 444.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 2981.058,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Dumaloq quvur",
+    "valueOne": 8.0,
+    "valueTwo": 2.0,
+    "valueThree": 6.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 1.7751999812966375,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Dumaloq quvur",
     "valueOne": 10.0,
-    "valueTwo": 0.0,
-    "valueThree": 2.0,
+    "valueTwo": 1.0,
+    "valueThree": 10.0,
     "valueFour": 0.0,
-    "ResultvalueOne": 1.233,
+    "ResultvalueOne": 2.2189999766207973,
     "ResultvalueTwo": 0.0
   },
   {
-    "AssortimentName": "Armatura",
+    "AssortimentName": "Dumaloq quvur",
     "valueOne": 10.0,
-    "valueTwo": 32.0,
+    "valueTwo": 1.0,
     "valueThree": 0.0,
-    "valueFour": 0.0,
-    "ResultvalueOne": 0.0,
-    "ResultvalueTwo": 51.903
-  },
-  {
-    "AssortimentName": "Armatura",
-    "valueOne": 9.0,
-    "valueTwo": 32.0,
-    "valueThree": 0.0,
-    "valueFour": 0.0,
-    "ResultvalueOne": 0.0,
-    "ResultvalueTwo": 64.077
-  },
-  {
-    "AssortimentName": "Armatura",
-    "valueOne": 9.0,
-    "valueTwo": 0.0,
-    "valueThree": 87556.0,
-    "valueFour": 0.0,
-    "ResultvalueOne": 43725.066,
+    "valueFour": 33.0,
+    "ResultvalueOne": 148.71563924148404,
     "ResultvalueTwo": 0.0
-  },
-  {
-    "AssortimentName": "Armatura",
-    "valueOne": 90.0,
-    "valueTwo": 0.0,
-    "valueThree": 87556.0,
-    "valueFour": 0.0,
-    "ResultvalueOne": 4372506.559,
-    "ResultvalueTwo": 0.0
-  },
-  {
-    "AssortimentName": "Armatura",
-    "valueOne": 90.0,
-    "valueTwo": 0.0,
-    "valueThree": 87556.0,
-    "valueFour": 0.0,
-    "ResultvalueOne": 4372506.559,
-    "ResultvalueTwo": 0.0
-  },
-  {
-    "AssortimentName": "Armatura",
-    "valueOne": 90.0,
-    "valueTwo": 0.0,
-    "valueThree": 87556.0,
-    "valueFour": 0.0,
-    "ResultvalueOne": 4372506.559,
-    "ResultvalueTwo": 0.0
-  },
-  {
-    "AssortimentName": "Armatura",
-    "valueOne": 90.0,
-    "valueTwo": 0.0,
-    "valueThree": 87556.0,
-    "valueFour": 0.0,
-    "ResultvalueOne": 4372506.559,
-    "ResultvalueTwo": 0.0
-  },
-  {
-    "AssortimentName": "Armatura",
-    "valueOne": 90.0,
-    "valueTwo": 0.0,
-    "valueThree": 87556.0,
-    "valueFour": 0.0,
-    "ResultvalueOne": 4372506.559,
-    "ResultvalueTwo": 0.0
-  },
-  {
-    "AssortimentName": "Armatura",
-    "valueOne": 90.0,
-    "valueTwo": 0.0,
-    "valueThree": 87.0,
-    "valueFour": 0.0,
-    "ResultvalueOne": 4344.74,
-    "ResultvalueTwo": 0.0
-  },
-  {
-    "AssortimentName": "Armatura",
-    "valueOne": 90.0,
-    "valueTwo": 86.0,
-    "valueThree": 0.0,
-    "valueFour": 0.0,
-    "ResultvalueOne": 0.0,
-    "ResultvalueTwo": 1.722
   }
 ]
