@@ -112,6 +112,7 @@
              Style="{DynamicResource AddButton}"
              VerticalAlignment="Bottom"
              HorizontalAlignment="Right"
+             Click="Button_Click"
             >
             
         </Button>

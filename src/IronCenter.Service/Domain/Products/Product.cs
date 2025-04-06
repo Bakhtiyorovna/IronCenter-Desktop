@@ -14,7 +14,6 @@ namespace IronCenter.Service.Domain.Products
         public string Name { get; set; }
         public int CategoryId  { get; set; }
         public int Value { get; set; }
-
         public List<Storage> Storages { get; set; }
         public List<Sale> Sales { get; set; }
     }

@@ -19,7 +19,8 @@ namespace IronCenter.Service.Data
         public DbSet<Category> Categories { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;;Database=IronCenterDb;Username=postgres;Password=1111");
+            string connectionstring = "Host=localhost;Port=5432;;Database=IronCenterDb;Username=postgres;Password=1111";
+            optionsBuilder.UseNpgsql(connectionstring);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

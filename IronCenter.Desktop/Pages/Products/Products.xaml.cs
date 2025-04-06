@@ -1,4 +1,6 @@
 ﻿using IronCenter.Desktop.Controllers;
+using IronCenter.Desktop.Windows.Products;
+using IronCenter.Desktop.Windows.Products;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,6 +50,12 @@ namespace IronCenter.Desktop.Pages.Dashboard.Products
             wrpCourses.Children.Add(productController5);
             ProductController productController6 = new ProductController();
             wrpCourses.Children.Add(productController6);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ProductCreateWindow window = new ProductCreateWindow();
+            window.Show();
         }
     }
 }
