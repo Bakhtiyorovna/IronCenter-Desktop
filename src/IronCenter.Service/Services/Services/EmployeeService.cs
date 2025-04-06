@@ -9,20 +9,9 @@ using System.Threading.Tasks;
 
 namespace IronCenter.Service.Services.Services
 {
-    public class EmployeeService : Service<Employee>, IEmployeeService
+    public class EmployeeService 
     {
-        private readonly IRepository<Employee> _repository;
-
-        public EmployeeService(IRepository<Employee> repository) : base(repository)
-        {
-            _repository = repository;
-        }
-
-        public async Task<List<Employee>> GetEmployeesByPositionAsync(int positionId)
-        {
-            var allEmployees = await _repository.GetAllAsync();
-            return allEmployees.Where(e => e.PositionId == positionId).ToList();
-        }
+       
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using IronCenter.Service.Domain.Products;
+﻿using IronCenter.Service.Domain.Common;
+using IronCenter.Service.Domain.Products;
 using IronCenter.Service.Enums;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace IronCenter.Service.Domain.Sales
 {
-    public class Sale
+    public class Sale:Auditable
     {
-        public int SaleId { get; set; }
 
         public int ProductId { get; set; }
         public Product Product { get; set; }

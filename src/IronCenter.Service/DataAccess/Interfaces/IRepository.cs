@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IronCenter.Service.Domain.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +7,19 @@ using System.Threading.Tasks;
 
 namespace IronCenter.Service.DataAccess.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : Auditable
     {
-        Task<IEnumerable<T>> GetAllAsync();
+        Task<T> AddAsync(T entity);
+
+
+
+
+
+        IQueryable<T> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task AddAsync(T entity);
-        void Update(T entity);
+        void Update(long Id, T entity);
         void Delete(T entity);
-        Task UpdateAsync<T>(T entity) where T : class;
-        Task DeleteAsync<T>(T entity) where T : class;
-        Task SaveChangesAsync();
+     
     }
 
 }

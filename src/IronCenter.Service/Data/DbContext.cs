@@ -28,17 +28,17 @@ namespace IronCenter.Service.Data
             modelBuilder.Entity<Storage>()
                 .HasOne(i => i.Product)
                 .WithMany(p => p.Storages)
-                .HasForeignKey(i => i.ProductId);
+                .HasForeignKey(i => i.Id);
 
             modelBuilder.Entity<Sale>()
                .HasOne(i => i.Product)
                .WithMany(p => p.Sales)
-               .HasForeignKey(i => i.ProductId);
+               .HasForeignKey(i => i.Id);
 
             modelBuilder.Entity<Salary>()
                 .HasOne(i => i.Employee)
                 .WithMany(p => p.Salaries)
-                .HasForeignKey(i => i.EmployeeId);
+                .HasForeignKey(i => i.Id);
         }
     }
 }

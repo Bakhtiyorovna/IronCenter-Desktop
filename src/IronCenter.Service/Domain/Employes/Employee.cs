@@ -1,10 +1,10 @@
-﻿using IronCenter.Service.Domain.Employers;
+﻿using IronCenter.Service.Domain.Common;
+using IronCenter.Service.Domain.Employers;
 
 namespace IronCenter.Service.Domain.Employes
 {
-    public class Employee
+    public class Employee :Auditable
     {
-        public int EmployeeId { get; set; }
         public string FullName { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty ;
         public int PositionId {  get; set; }

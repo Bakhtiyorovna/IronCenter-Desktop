@@ -1,6 +1,9 @@
 ﻿using IronCenter.Service.Data;
+using IronCenter.Service.DataAccess.Interfaces;
+using IronCenter.Service.DataAccess.Repositories;
 using IronCenter.Service.Domain.Categories;
 using IronCenter.Service.Domain.Products;
+using IronCenter.Service.Services.Interfaces;
 using IronCenter.Service.Services.Services;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,21 +16,24 @@ namespace IronCenter.Desktop.Windows.Products
     public partial class ProductCreateWindow : Window
     {
         private readonly ProductService _productService;
-        private readonly CategoryService _categoryService;
+       // private readonly ICategoryService _categoryService;
+        public readonly ICategoryService _categoryService;
         public ProductCreateWindow()
         {
             InitializeComponent();
             LoadCategories();
-            _categoryService = new CategoryService();
+            var dbContext = new AppDbContext(); // DbContext yaratish
+            var repository = new Repository<Category>(dbContext); // Repository yaratish
+            _categoryService = new CategoryService(repository); // Service yaratish
         }
 
         private async Task LoadCategories()
         {
             var initialCategories = new List<Category>
             {
-               new Category { Name = "Elektronika", Description = "Elektronika mahsulotlari", Created = DateTime.Now, Updated = DateTime.Now },
-               new Category { Name = "Kitoblar", Description = "Kitoblar va adabiyotlar", Created = DateTime.Now, Updated = DateTime.Now },
-               new Category { Name = "Kiyimlar", Description = "Kiyim-kechaklar", Created = DateTime.Now, Updated = DateTime.Now }
+               new Category {Id=0, Name = "Elektronika", Description = "Elektronika mahsulotlari",DeletedBy=0,UpdatedBy=0, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+             //  new Category { Name = "Kitoblar", Description = "Kitoblar va adabiyotlar",DeletedBy=0,UpdatedBy=0, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+             //  new Category {Name = "Kiyimlar", Description = "Kiyim-kechaklar", DeletedBy = 0, UpdatedBy = 0, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now}
             };
 
             foreach (var category in initialCategories)
@@ -37,7 +43,6 @@ namespace IronCenter.Desktop.Windows.Products
 
             var categories = await _categoryService.GetAllAsync();
             cmbCategory.ItemsSource = categories;
-
         }
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
@@ -63,12 +68,12 @@ namespace IronCenter.Desktop.Windows.Products
                 CategoryId = (int)cmbCategory.SelectedValue
             };
 
-            _productService.AddAsync(newProduct); 
+         /*   _productService.AddAsync(newProduct); 
 
             MessageBox.Show("Mahsulot muvaffaqiyatli qo‘shildi!", "Muvaffaqiyat", MessageBoxButton.OK, MessageBoxImage.Information);
 
             txtProductName.Clear();
-            cmbCategory.SelectedIndex = -1;
+            cmbCategory.SelectedIndex = -1; */
         }
     }
 }

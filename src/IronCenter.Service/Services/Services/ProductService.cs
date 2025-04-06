@@ -9,20 +9,11 @@ using System.Threading.Tasks;
 
 namespace IronCenter.Service.Services.Services
 {
-    public class ProductService : Service<Product>, IProductService
+    public class ProductService 
     {
-        private readonly IRepository<Product> _repository;
+      
 
-        public ProductService(IRepository<Product> repository) : base(repository)
-        {
-            _repository = repository;
-        }
-
-        public async Task<List<Product>> GetProductsByCategoryIdAsync(int categoryId)
-        {
-            var allProducts = await _repository.GetAllAsync();
-            return allProducts.Where(p => p.CategoryId == categoryId).ToList();
-        }
+      
     }
 
 }

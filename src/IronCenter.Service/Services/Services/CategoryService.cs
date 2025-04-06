@@ -13,11 +13,15 @@ namespace IronCenter.Service.Services.Services
     public class CategoryService : ICategoryService
     {
         private readonly IRepository<Category> _repository;
-
-        public async Task AddAsync(Category entity)
+        public CategoryService(IRepository<Category> repository)
         {
-            await _repository.AddAsync(entity);
-            await _repository.SaveChangesAsync();
+            _repository = repository;
+        }
+
+        public async Task<Category> AddAsync(Category entity)
+        {
+            var createdCategory = await _repository.AddAsync(entity);
+            return createdCategory;
         }
 
         public Task DeleteAsync(int id)

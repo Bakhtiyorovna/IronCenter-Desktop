@@ -1,4 +1,5 @@
-﻿using IronCenter.Service.Domain.Products;
+﻿using IronCenter.Service.Domain.Common;
+using IronCenter.Service.Domain.Products;
 using IronCenter.Service.Enums;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,8 @@ using System.Threading.Tasks;
 
 namespace IronCenter.Service.Domain.Storages
 {
-    public class Storage
+    public class Storage:Auditable
     {
-        public int StorageId { get; set; }
         public int ProductId { get; set; }       
         public Product Product { get; set; }
 

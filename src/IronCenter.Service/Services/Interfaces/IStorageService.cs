@@ -1,5 +1,4 @@
 ﻿using IronCenter.Service.Domain.Storages;
-using IronCenter.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IronCenter.Service.Services.Interfaces
 {
-    public interface IStorageService : IService<Storage>
+    public interface IStorageService 
     {
         Task<List<Storage>> GetStoragesByProductIdAsync(int productId);
     }

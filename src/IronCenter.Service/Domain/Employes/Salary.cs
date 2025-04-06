@@ -1,4 +1,5 @@
-﻿using IronCenter.Service.Domain.Employes;
+﻿using IronCenter.Service.Domain.Common;
+using IronCenter.Service.Domain.Employes;
 using IronCenter.Service.Enums;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace IronCenter.Service.Domain.Employers
 {
-    public class Salary
+    public class Salary:Auditable
     {
-        public int SalaryId { get; set; }
         public int EmployeeId { get; set; }         
         public Employee Employee { get; set; }
 

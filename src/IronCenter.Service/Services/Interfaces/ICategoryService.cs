@@ -1,5 +1,4 @@
 ﻿using IronCenter.Service.Domain.Categories;
-using IronCenter.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,13 @@ using System.Threading.Tasks;
 
 namespace IronCenter.Service.Services.Interfaces
 {
-    public interface ICategoryService:IService<Category>
+    public interface ICategoryService
     {
+        Task<Category> AddAsync(Category entity);
+
+        Task<List<Category>> GetAllAsync();
+        Task<Category> GetByIdAsync(int id);
+        Task UpdateAsync(Category entity);
+        Task DeleteAsync(int id);
     }
 }
