@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace IronCenter.Service.Services.Services
 {
-    public class ProductService 
+    public class ProductService : IProductService
     {
-      
-
-      
+        public Task<List<Product>> GetProductsByCategoryIdAsync(int categoryId)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

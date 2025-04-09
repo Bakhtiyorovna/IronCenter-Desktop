@@ -12,9 +12,9 @@ namespace IronCenter.Service.Domain.Products
     public class Product :Auditable
     {
         public string Name { get; set; }
-        public int CategoryId  { get; set; }
+        public long CategoryId  { get; set; }
+        public string CategoryName { get; set; } = string.Empty;
         public int Value { get; set; }
         public List<Storage> Storages { get; set; }
-        public List<Sale> Sales { get; set; }
     }
 }

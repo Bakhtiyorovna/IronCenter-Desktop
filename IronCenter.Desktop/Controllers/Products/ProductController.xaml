@@ -5,110 +5,61 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IronCenter.Desktop.Controllers"
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="500"
-             Background="Transparent">
-    <Grid>
-        <Border  
-             Background="{DynamicResource PagesBackgraundColor}"
-             Opacity="0.2"
-             CornerRadius="15"
-             Height="125"
-             Width="420"
-             Margin="0 10 10 0"
-             BorderThickness="0 0 3 2"
-             BorderBrush="white">
-             
+             Background="Transparent" Margin="0 5"
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="125" Width="865">
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Background Gradient -->
+        <Border      
+            CornerRadius="15" Height="125" Margin="5,0,0,0" BorderThickness="0 0 3 2" BorderBrush="white" Grid.ColumnSpan="3">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#014B8C" Offset="0.0" />
+                    <GradientStop Color="#417397" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
         </Border>
-        <Border
-            Width="2"
-            Height="90"
-            HorizontalAlignment="Left"
-            Margin="30 0 0 0"
-            Background="{DynamicResource EventTextColor}"
-            CornerRadius="2">
-            
+
+        <Border Height="125" Width="200" HorizontalAlignment="Left" Margin="0"  Grid.Column="0" CornerRadius="15 0 0 15">
+           
+            <Border.Background>
+                <ImageBrush ImageSource="D:\Proekts\DotNet\IronCenter-Desktop\IronCenter.Desktop\Assets\Images\ProductImages\ArmaturaPicture.jpg"></ImageBrush>
+            </Border.Background>
         </Border>
-        <TextBlock Text="Armatura 17*30"
-                   Margin="60 30"
-                   Height="20"
-                   FontSize="20"
-                   FontFamily="arial"
-                   VerticalAlignment="Top"
-                   HorizontalAlignment="Left"
-                   FontWeight="Bold"
-                   Foreground="{DynamicResource TextColor}"></TextBlock>
-        <TextBlock Text="15.07.2024"
-                   Foreground="#AAAF23"
-                   Margin="270 30 0 0"
-                   FontSize="16">
-        </TextBlock>
-        <Grid Height="60"
-              Width="300"
-              Margin="60 30 0 0" 
-              HorizontalAlignment="Left">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+
+
+        <!-- Title -->
+        <TextBlock x:Name="txbName" Text="Armatura" Margin="20,21,0,0" FontSize="25" FontFamily="Arial" FontWeight="Bold" Foreground="#FBC02D" VerticalAlignment="Top" HorizontalAlignment="Left" Width="430" Grid.Column="1"/>
+
+        <!-- Category -->
+        <TextBlock x:Name="txbCategoryName" Grid.Column="1" Text="Metallurgiya mahsulotlari" FontSize="18" FontWeight="SemiBold" Foreground="#F0F0F0" Margin="20,56,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <!-- Value -->
+        <TextBlock x:Name="txbValue" Grid.Column="1" Text="100 dona mavjud" FontSize="16" FontWeight="Regular" Foreground="#FFFFFF" Margin="20,84,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <!-- Buttons Section -->
+        <Grid Grid.Column="2" Margin="10 0 15 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
-            <TextBlock Grid.Row="0"
-                       Grid.Column="0"
-                       Text="1kg"
-                       TextAlignment="Left"
-                       FontSize="16"
-                       Foreground="{DynamicResource DimTextColor}"
-                       VerticalAlignment="Center"></TextBlock>
-            <TextBlock Grid.Row="1"
-              Grid.Column="0"
-              Text="1m"
-              TextAlignment="Left"
-              FontSize="16"
-              Foreground="{DynamicResource DimTextColor}"
-                       VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="0"
-            Grid.Column="1"
-            Text="1,7 USD"
-            TextAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="16"
-            Foreground="Green">
 
-            </TextBlock>
-            <TextBlock Grid.Row="0"
-                       Grid.Column="2"
-                       Text="20000 UZS"
-                       TextAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="16"
-                       Foreground="Green">
-                
-            </TextBlock>
+            <!-- Update Button -->
+            <Button VerticalAlignment="Bottom" Grid.Row="0" Content="O'zgartirish" FontFamily="Arial" FontSize="16" Height="40" Margin="0 5" Style="{DynamicResource UpdateButton}" Click="UpdateButton_Click" />
 
-            <TextBlock Grid.Row="1"
-                       Grid.Column="1"
-                       Text="1,7 USD"
-                       TextAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="16"
-                       Foreground="Green">
-
-            </TextBlock>
-            <TextBlock Grid.Row="1"
-            Grid.Column="2"
-            Text="20000 UZS"
-            TextAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="16"
-            Foreground="Green">
-
-            </TextBlock>
-          
-
+            <!-- Delete Button -->
+            <Button VerticalAlignment="Top" Grid.Row="1" Content="O'chirish" FontFamily="Arial" FontSize="16" Height="40" Margin="0,10,0,0" Style="{DynamicResource DeleteButton}" Click="DeleteButton_Click" />
         </Grid>
+
+        <!-- Invisible TextBlocks for Binding -->
+        <TextBlock x:Name="txbId" Foreground="Transparent" />
+        <TextBlock x:Name="txbCategoryId" Foreground="Transparent" />
     </Grid>
 </UserControl>

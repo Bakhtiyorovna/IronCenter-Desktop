@@ -4,8 +4,11 @@ using IronCenter.Service.Services.Interfaces;
 
 namespace IronCenter.Service.Services.Services
 {
-    public class StorageService 
+    public class StorageService : IStorageService
     {
-       
+        public Task<List<Storage>> GetStoragesByProductIdAsync(int productId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

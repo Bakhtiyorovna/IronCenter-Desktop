@@ -10,6 +10,12 @@ namespace IronCenter.Service.Data
 {
     public class AppDbContext : DbContext
     {
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+       : base(options)
+        {
+
+        }
+
         public DbSet<Product> Products { get; set; }
         public DbSet<Storage> Storages { get; set; }
         public DbSet<Employee> Employees { get; set; }
@@ -17,11 +23,11 @@ namespace IronCenter.Service.Data
         public DbSet<Salary> Salaries { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Category> Categories { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            string connectionstring = "Host=localhost;Port=5432;;Database=IronCenterDb;Username=postgres;Password=1111";
-            optionsBuilder.UseNpgsql(connectionstring);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    string connectionstring = "Host=localhost;Port=5432;;Database=IronCenter-Db;Username=postgres;Password=1111";
+        //    optionsBuilder.UseNpgsql(connectionstring);
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,7 +37,7 @@ namespace IronCenter.Service.Data
                 .HasForeignKey(i => i.Id);
 
             modelBuilder.Entity<Sale>()
-               .HasOne(i => i.Product)
+               .HasOne(i => i.Storage)
                .WithMany(p => p.Sales)
                .HasForeignKey(i => i.Id);
 

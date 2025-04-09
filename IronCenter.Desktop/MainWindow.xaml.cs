@@ -1,8 +1,11 @@
 ﻿using IronCenter.Desktop.Pages.Calculator;
 using IronCenter.Desktop.Pages.Dashboard;
 using IronCenter.Desktop.Pages.Dashboard.Products;
+using IronCenter.Desktop.Pages.Sales;
+using IronCenter.Desktop.Pages.Storages;
 using IronCenter.Service;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -75,10 +78,10 @@ namespace IronCenter.Desktop
 
         private void AsosiyButton_Click(object sender, RoutedEventArgs e)
         {
-            Title.Text = "Asosiy";
+            Title.Text = "Qoldiq mahsulotlar";
 
-            Dashboard dashboard = new Dashboard();
-            FrameFilter.Content = dashboard;
+            Ostatka ostatka = new Ostatka();
+            FrameFilter.Content = (ostatka);
         }
 
         private void MahsulotlarButton_Click(object sender, RoutedEventArgs e)
@@ -96,6 +99,40 @@ namespace IronCenter.Desktop
 
             CalculatorPage page = new CalculatorPage(this);
             FrameFilter.Content =(page);
+        }
+
+        public async Task  UpdatePage()
+        {
+            // Page'ni yangilash uchun kerakli amalni bajarish
+            var page = this.Content as Products;
+            if (page != null)
+            {
+               await page.Refresh();
+            }
+        }
+
+        private void OmborButton_Click(object sender, RoutedEventArgs e)
+        {
+            Title.Text = "Ombor";
+
+            Storages storage = new Storages();
+            FrameFilter.Content=(storage);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Title.Text = "Asosiy";
+
+            Dashboard dashboard = new Dashboard();
+            FrameFilter.Content = dashboard;
+        }
+
+        private void SaleButton_Click(object sender, RoutedEventArgs e)
+        {
+            Title.Text = "Sotuvlar ro'yxati";
+
+            SalePage sale = new SalePage();
+            FrameFilter.Content =(sale);
         }
     }
 }

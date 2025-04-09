@@ -1,12 +1,15 @@
-﻿using IronCenter.Service.Data;
-using IronCenter.Service.DataAccess.Interfaces;
+﻿using IronCenter.Service.DataAccess.Interfaces;
 using IronCenter.Service.DataAccess.Repositories;
 using IronCenter.Service.Domain.Categories;
 using IronCenter.Service.Domain.Products;
 using IronCenter.Service.Services.Interfaces;
 using IronCenter.Service.Services.Services;
+using IronCenter.Desktop.DbContexts;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using System.Windows;
+using System.ComponentModel;
 
 namespace IronCenter.Desktop.Windows.Products
 {
@@ -15,39 +18,37 @@ namespace IronCenter.Desktop.Windows.Products
     /// </summary>
     public partial class ProductCreateWindow : Window
     {
-        private readonly ProductService _productService;
-       // private readonly ICategoryService _categoryService;
-        public readonly ICategoryService _categoryService;
         public ProductCreateWindow()
         {
             InitializeComponent();
             LoadCategories();
-            var dbContext = new AppDbContext(); // DbContext yaratish
-            var repository = new Repository<Category>(dbContext); // Repository yaratish
-            _categoryService = new CategoryService(repository); // Service yaratish
         }
 
         private async Task LoadCategories()
         {
-            var initialCategories = new List<Category>
+            try
             {
-               new Category {Id=0, Name = "Elektronika", Description = "Elektronika mahsulotlari",DeletedBy=0,UpdatedBy=0, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-             //  new Category { Name = "Kitoblar", Description = "Kitoblar va adabiyotlar",DeletedBy=0,UpdatedBy=0, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
-             //  new Category {Name = "Kiyimlar", Description = "Kiyim-kechaklar", DeletedBy = 0, UpdatedBy = 0, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now}
-            };
-
-            foreach (var category in initialCategories)
-            {
-                await _categoryService.AddAsync(category);
+                using (var dbContext = new AppDbContext())
+                {
+                    var categories = await dbContext.Categories.ToListAsync();
+                    if (categories.Count > 0)
+                    {
+                        cmbCategory.ItemsSource = categories;
+                        cmbCategory.DisplayMemberPath = "Name";  // ComboBoxda ko'rsatiladigan maydon
+                        cmbCategory.SelectedValuePath = "Id";   // ComboBoxda tanlangan qiymatning id'si
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not found categories");
+                    }
+                }
             }
+            catch (Exception ex) { }
 
-            var categories = await _categoryService.GetAllAsync();
-            cmbCategory.ItemsSource = categories;
         }
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
-            ProductCreateWindow window = new ProductCreateWindow();
             this.Close();
         }
 
@@ -60,20 +61,32 @@ namespace IronCenter.Desktop.Windows.Products
                 return;
             }
 
-            // Yangi Product yaratamiz
-            var newProduct = new Product
+            try
             {
-                Name = txtProductName.Text,
-                Value = 0,
-                CategoryId = (int)cmbCategory.SelectedValue
-            };
+                var newProduct = new Product
+                {
+                    Name = txtProductName.Text,
+                    Value = 0,
+                    CategoryId =(long)cmbCategory.SelectedValue
+                };
+                
+                using (var dbContext = new AppDbContext())
+                {
+                    long Id = (long)cmbCategory.SelectedValue;
+                    var category =  dbContext.Categories.Find(Id);
 
-         /*   _productService.AddAsync(newProduct); 
+                    newProduct.CategoryName = category.Name;
 
-            MessageBox.Show("Mahsulot muvaffaqiyatli qo‘shildi!", "Muvaffaqiyat", MessageBoxButton.OK, MessageBoxImage.Information);
-
-            txtProductName.Clear();
-            cmbCategory.SelectedIndex = -1; */
+                    dbContext.Add(newProduct);
+                    var result = dbContext.SaveChanges();
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Mahsulot muvaffaqiyatli saqlandi!");
+                        this.Close();
+                    }
+                }
+            }
+            catch(Exception ex) { }
         }
     }
 }

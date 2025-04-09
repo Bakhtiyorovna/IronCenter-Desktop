@@ -11,7 +11,7 @@ namespace IronCenter.Service.Domain.Employers
 {
     public class Salary:Auditable
     {
-        public int EmployeeId { get; set; }         
+        public long EmployeeId { get; set; }         
         public Employee Employee { get; set; }
 
         public DateTime GivenDate { get; set; }

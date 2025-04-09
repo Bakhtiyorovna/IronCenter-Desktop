@@ -12,7 +12,8 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         WindowStyle="None"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded">
     <Border 
             CornerRadius="15" 
             Padding="10" 
@@ -28,23 +29,29 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
-            <TextBlock Text="Iron Center" 
-                       FontSize="23" 
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Path Data="{DynamicResource logo}" Height="32" Width="32"
+                 Fill="#FF8C42"
+        Stretch="Fill" Margin="10 0 10 0"></Path>
+                <TextBlock Text="Iron Center" 
+                       FontSize="30" 
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Center"
-                       FontFamily="Calibri">
+                       FontStretch="Medium"
+                       FontFamily="Trebuchet MS">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="green" Offset="0.0"/>
-                        <GradientStop Color="Purple" Offset="0.5"/>
-                        <GradientStop Color="blue" Offset="1.0"/>
+                            <GradientStop Color="#FF8C42" Offset="0.0"/>
+                            <GradientStop Color="BlueViolet" Offset="0.5"/>
+                            <GradientStop Color="Blue" Offset="1.0"/>
                     </LinearGradientBrush>
                 </TextBlock.Foreground>
-            </TextBlock>
+            </TextBlock></StackPanel>
+          
             <Border Grid.Row="0" Grid.Column="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 10 0">
                     <Button x:Name="btnMinimized" Style="{DynamicResource MinimizedButton}" Click="btnMinimized_Click" ></Button>
@@ -72,7 +79,9 @@
                              Click="AsosiyButton_Click" 
                              Style="{DynamicResource menuButton}">
                     <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
+                        <Path  Style="{DynamicResource menuButtonIcon1}"
+                            Data="{DynamicResource dashboard}" Height="17" Width="17"
+                           Stretch="Fill" Margin="20 0 0 0"></Path>
                         <TextBlock Text="Asosiy" Style="{DynamicResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
@@ -81,22 +90,16 @@
                              Click="MahsulotlarButton_Click" 
                              Style="{DynamicResource menuButton}" >
                     <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
+                        <Path Data="{DynamicResource product}" Height="18" Width="18"
+        Style="{DynamicResource menuButtonIcon1}" Stretch="Fill" Margin="20 0 0 0"></Path>
                         <TextBlock Text="Mahsulotlar" Style="{DynamicResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
 
-                <RadioButton x:Name="AsosiyButton3"
-               Click="AsosiyButton_Click" 
-               Style="{DynamicResource menuButton}" >
-                    <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
-                        <TextBlock Text="Buyurtmalar" Style="{DynamicResource menuButtonText}"/>
-                    </StackPanel>
-                </RadioButton>
+               
 
                 <RadioButton x:Name="AsosiyButton4"
-              Click="AsosiyButton_Click" 
+              Click="OmborButton_Click" 
               Style="{DynamicResource menuButton}" >
                     <StackPanel Orientation="Horizontal">
                         <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
@@ -104,12 +107,22 @@
                     </StackPanel>
                 </RadioButton>
 
+                <RadioButton x:Name="SaleButton"
+Click="SaleButton_Click" 
+Style="{DynamicResource menuButton}" >
+                    <StackPanel Orientation="Horizontal">
+                        <icon:PackIconMaterial Kind="Sale" Style="{DynamicResource menuButtonIcon}"/>
+                        <TextBlock Text="Sotuvlar ro‘yxati" Style="{DynamicResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+
                 <RadioButton x:Name="AsosiyButton6"
                     Click="AsosiyButton_Click" 
                     Style="{DynamicResource menuButton}" >
                     <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
-                        <TextBlock Text="Astatkalar" Style="{DynamicResource menuButtonText}"/>
+                        <Path Data="{DynamicResource astatka}" Height="16" Width="18"
+                    Style="{DynamicResource menuButtonIcon1}" Stretch="Fill"  Margin="20 0 0 0"></Path>
+                        <TextBlock Text="Qoldiq mahsulotlar" Style="{DynamicResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
 
@@ -117,65 +130,24 @@
                     Click="KalkulatorButton_Click" 
                     Style="{DynamicResource menuButton}" >
                     <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
-                        <TextBlock Text="Kalkulyator" Style="{DynamicResource menuButtonText}"/>
+                        <Path Data="{DynamicResource colculator}" Height="16" Width="18"
+                            Style="{DynamicResource menuButtonIcon1}" Stretch="Fill" Margin="20 0 0 0"></Path>
+                        <TextBlock Text="Metall hisoblagich" Style="{DynamicResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
-
-                <RadioButton x:Name="AsosiyButton7"
-                    Click="AsosiyButton_Click" 
-                    Style="{DynamicResource menuButton}" >
-                    <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
-                        <TextBlock Text="Xodimlar" Style="{DynamicResource menuButtonText}"/>
-                    </StackPanel>
-                </RadioButton>
-
-                <RadioButton x:Name="AsosiyButton8"
-                     Click="AsosiyButton_Click" 
-                     Style="{DynamicResource menuButton}" >
-                    <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
-                        <TextBlock Text="Mijozlar" Style="{DynamicResource menuButtonText}"/>
-                    </StackPanel>
-                </RadioButton>
-
-                <RadioButton x:Name="AsosiyButton10"
-                    Click="AsosiyButton_Click" 
-                    Style="{DynamicResource menuButton}" >
-                    <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
-                        <TextBlock Text="Hamkorlar" Style="{DynamicResource menuButtonText}"/>
-                    </StackPanel>
-                </RadioButton>
-
-                <RadioButton x:Name="AsosiyButton9"
-                    Click="AsosiyButton_Click" 
-                    Style="{DynamicResource menuButton}" >
-                    <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
-                        <TextBlock Text="Moliya" Style="{DynamicResource menuButtonText}"/>
-                    </StackPanel>
-                </RadioButton>
-
 
                 <RadioButton x:Name="AsosiyButton11"
                     Click="AsosiyButton_Click" 
                     Style="{DynamicResource menuButton}" >
                     <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
+                       <Path Data="{DynamicResource info}" Height="16" Width="18"
+                             Style="{StaticResource menuButtonIcon1}"
+                             Stretch="Fill" Margin="20 0 0 0"></Path>
                         <TextBlock Text="Ma'lumotlar" Style="{DynamicResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
 
-                <RadioButton x:Name="AsosiyButton12"
-                    Click="AsosiyButton_Click" 
-                    Style="{DynamicResource menuButton}" >
-                    <StackPanel Orientation="Horizontal">
-                        <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
-                        <TextBlock Text="Sozlamalar" Style="{DynamicResource menuButtonText}"/>
-                    </StackPanel>
-                </RadioButton>
+              
 
             </StackPanel>
             <Border Grid.Column="1" Grid.Row="1" >

@@ -1,18 +1,13 @@
 ﻿using IronCenter.Service.Domain.Common;
 using IronCenter.Service.Domain.Products;
+using IronCenter.Service.Domain.Sales;
 using IronCenter.Service.Enums;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IronCenter.Service.Domain.Storages
 {
     public class Storage:Auditable
     {
-        public int ProductId { get; set; }       
+        public long ProductId { get; set; }       
         public Product Product { get; set; }
 
         public DateTime ArrivalDate { get; set; }
@@ -21,5 +16,7 @@ namespace IronCenter.Service.Domain.Storages
         public decimal TotalPrice { get; set; }
         public int PeresentValue { get; set; }
         public Currency Сurrency { get; set; }
+        public Unitary Unitary { get; set; }
+        public List<Sale> Sales { get; set; }
     }
 }

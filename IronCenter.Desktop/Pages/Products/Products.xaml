@@ -23,14 +23,15 @@
              Height="70"
              VerticalAlignment="Top">
             <Border
-           
-            Background="{DynamicResource PagesBackgraundColor}"
-            Opacity="0.2"
             CornerRadius="15"
-          
             >
-         
-        </Border>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#014B8C" Offset="0.0" />
+                        <GradientStop Color="#417397" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
             <icon:PackIconMaterial Kind="Package"
                      Width="15" 
                      Height="15" 
@@ -39,12 +40,12 @@
                      VerticalAlignment="Center"
                      Foreground="{DynamicResource TextColor}"/>
             <TextBlock
-                
-                Text="333 ta mahsulot mavjud"
+                x:Name="txbProductCount"
+                Text="0 turdagi mahsulot mavjud"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
                 Margin="40 0"
-                Foreground="{DynamicResource TextColor}"
+                Foreground="#FFF"
                 FontSize="16"></TextBlock>
         </Grid>
         <Border Height="40" 
@@ -79,13 +80,15 @@
                       Height="36"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
-                      
+                      PreviewKeyDown="TextBoxSearch_PreviewKeyDown"
+                     TextChanged="TextBoxSearch_TextChanged"
                      >
             </TextBox>
             <Border Grid.Column="2" 
                      Background="#032B4F"
                      CornerRadius="0 10 10 0"
-                     Height="36">
+                     Height="36"
+                     >
 
                 <icon:PackIconMaterial Kind="Magnify" 
                                     Width="15" 
@@ -98,13 +101,56 @@
 
         </Grid>
         </Border>
+        <TextBlock
+            x:Name="loader"
+            FontSize="16"
+            Text="Siz qidirgan mahsulot mavjud emas. Iltimos, boshqa so‘z kiriting."
+            VerticalAlignment="Center"
+            Foreground="Transparent"
+            HorizontalAlignment="Center"></TextBlock>
+      
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  Margin="10 90 10 60">
+            <ScrollViewer.Resources>
+                <Style TargetType="ScrollBar">
+                    <Setter Property="Width" Value="10"/>
+                    <!-- ScrollBar Width -->
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ScrollBar">
+                                <Grid Background="Transparent">
+                                    <Track Name="PART_Track" 
+                            IsDirectionReversed="true"
+                            Focusable="false">
 
-        <ScrollViewer Margin="10 90 10 60"
-                   >
+
+                                        <Track.Thumb>
+                                            <Thumb Background="#417397"
+                                    Height="50"
+                                    Width="10">
+                                                <Thumb.Template>
+                                                    <ControlTemplate TargetType="Thumb">
+                                                        <Border CornerRadius="5" 
+                                                 Background="{TemplateBinding Background}"/>
+                                                    </ControlTemplate>
+                                                </Thumb.Template>
+                                            </Thumb>
+                                        </Track.Thumb>
+
+
+                                    </Track>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ScrollViewer.Resources>
+
             <WrapPanel x:Name="wrpCourses" >
 
             </WrapPanel>
         </ScrollViewer>
+
         <Button
              Height="38"
              Margin="10"

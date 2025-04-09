@@ -13,6 +13,7 @@ namespace IronCenter.Service.DataAccess.Repositories
     {
         public CategoryRepository(AppDbContext context) : base(context)
         {
+
         }
     }
 }

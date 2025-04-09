@@ -1,5 +1,6 @@
 ﻿using IronCenter.Service.Data;
 using IronCenter.Service.DataAccess.Interfaces;
+using IronCenter.Service.Domain.Categories;
 using IronCenter.Service.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,11 +15,11 @@ namespace IronCenter.Service.DataAccess.Repositories
     public class Repository<T> : IRepository<T> where T : Auditable
     {
         protected readonly AppDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        protected readonly DbSet<T> _dbSet;
 
-        public Repository(AppDbContext context)
+        public Repository(AppDbContext dbContext)
         {
-            _context = context;
+            _context = dbContext;
             _dbSet = _context.Set<T>();
         }
         public async Task<T> AddAsync(T entity)

@@ -1,33 +1,71 @@
-﻿namespace IronCenter.Desktop
+﻿using IronCenter.Desktop.DbContexts;
+using IronCenter.Desktop.Windows.Products;
+using IronCenter.Service.DataAccess.Interfaces;
+using IronCenter.Service.DataAccess.Repositories;
+using IronCenter.Service.Domain.Categories;
+using IronCenter.Service.Services.Interfaces;
+using IronCenter.Service.Services.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System.Windows;
+
+namespace IronCenter.Desktop
 {
     public partial class App : Application
     {
-       // public static ServiceProvider ServiceProvider { get; private set; }
+        public App()
+        {
+            InitializeComponent();
+            var serviceCollection = new ServiceCollection();
+            //ConfigureServices(serviceCollection);
 
-            //protected override void OnStartup(StartupEventArgs e)
-            //{
-            //    base.OnStartup(e);
+        }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            //base.OnStartup(e);
 
-            //    // Dependency Injection konteynerini yaratish
-            //    var serviceCollection = new ServiceCollection();
+            //// Initialize DI container
+            //var serviceProvider = ConfigureServices();
 
-            //    // ApplicationDbContext va ProductService'ni DI konteyneriga qo'shish
-            //    serviceCollection.AddDbContext<DbContext>(options =>
-            //        options.UseNpgsql("Host=localhost;Port=5432;Database=IronCenterDb;Username=postgres;Password=1111"));
+            //// Resolve MainWindow with dependencies
+            //var mainWindow = serviceProvider.GetRequiredService<MainWindow>();
 
-            //    // ICategoryService va Repository xizmatlarini DI'ga qo'shish
-            //    serviceCollection.AddScoped<ICategoryService, CategoryService>();
-            //    serviceCollection.AddScoped<IRepository<Category>, Repository<Category>>();
+            //// Show MainWindow
+            //mainWindow.Show();
+            //base.OnStartup(e);
 
-            //    // MainWindow ni DI konteyneriga qo'shish
-            //    serviceCollection.AddTransient<MainWindow>();
+        }
 
-            //    // DI konteyneridan ServiceProvider yaratish
-            //    ServiceProvider = serviceCollection.BuildServiceProvider();
+        private IServiceProvider ConfigureServices()
+        {
+            var services = new ServiceCollection();
 
-            //    // MainWindow ni DI orqali yaratish va ko'rsatish
-            //    var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
-            //    mainWindow.Show();
-            //}
+            services.AddDbContext<AppDbContext>(ServiceLifetime.Transient);
+            services.AddSingleton<Controller>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IStorageService, StorageService>();
+            services.AddScoped<IProductService, ProductService>();
+           
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            // Register services
+
+
+            // Register MainWindow (optional if using implicit registration)
+            services.AddTransient<MainWindow>();
+
+            // Build service provider
+            return services.BuildServiceProvider();
+        }
+        private void ConfigureServicesss(IServiceCollection services)
+        {
+            services.AddDbContext<AppDbContext>(ServiceLifetime.Transient);
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddTransient<MainWindow>();
+
+        }
     }
+    
 }

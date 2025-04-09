@@ -1,5 +1,13 @@
 ﻿using IronCenter.Desktop.Controllers;
+using IronCenter.Desktop.DbContexts;
 using IronCenter.Desktop.Windows.Products;
+using IronCenter.Service.Domain.Products;
+using IronCenter.Service.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace IronCenter.Desktop.Pages.Dashboard.Products
 {
@@ -11,35 +19,85 @@ namespace IronCenter.Desktop.Pages.Dashboard.Products
         public Products()
         {
             InitializeComponent();
+            Refresh();
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            await Refresh();
+           
         }
 
-        public async Task Refresh()
+        public async Task  Refresh()
         {
-            ProductController productController = new ProductController();
-            wrpCourses.Children.Add(productController);
-            ProductController productController1 = new ProductController();
-            wrpCourses.Children.Add(productController1);
-            ProductController productController2 = new ProductController();
-            wrpCourses.Children.Add(productController2);
-            ProductController productController3 = new ProductController();
-            wrpCourses.Children.Add(productController3);
-            ProductController productController4 = new ProductController();
-            wrpCourses.Children.Add(productController4);
-            ProductController productController5 = new ProductController();
-            wrpCourses.Children.Add(productController5);
-            ProductController productController6 = new ProductController();
-            wrpCourses.Children.Add(productController6);
+            await using (var dbContext = new AppDbContext())
+            {
+                wrpCourses.Children.Clear();
+
+                var products = await dbContext.Products.ToListAsync();
+                long count = products.Count;
+                foreach (var product in products.AsEnumerable().Reverse())
+                { 
+                    txbProductCount.Text = count.ToString()+" turdagi mahsulot mavjud";
+                    ProductController productController = new ProductController(this);
+                    productController.SetData(product);
+                    wrpCourses.Children.Add(productController);
+                }
+            };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ProductCreateWindow window = new ProductCreateWindow();
-            window.Show();
+            var productCreateWindow = new ProductCreateWindow();
+            productCreateWindow.Show();
+            productCreateWindow.Closed += (s, e) => Refresh();
+        }
+
+        private async void TextBoxSearch_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            await SearchAsync();
+        }
+
+        private async void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           await SearchAsync();
+        }
+
+        public async Task SearchAsync()
+        { 
+            try
+            {
+                var searchQuery = TextBoxSearch.Text;
+                using (var dbContext = new AppDbContext())
+                {
+                         var products = await dbContext.Products
+                        .Where(p => EF.Functions.ILike(p.Name, $"%{searchQuery}%")
+                                 || EF.Functions.ILike(p.CategoryName, $"%{searchQuery}%"))
+                        .ToListAsync();
+
+                    wrpCourses.Children.Clear();
+                    if (products.Count > 0)
+                    {
+                        long count = products.Count;
+                        foreach (var product in products.AsEnumerable().Reverse())
+                        {
+                            txbProductCount.Text = count.ToString() + " turdagi mahsulot mavjud";
+                            ProductController productController = new ProductController(this);
+                            productController.SetData(product);
+                            wrpCourses.Children.Add(productController);
+                        }
+                        loader.Foreground = new SolidColorBrush(Colors.Transparent);
+                    }
+                    else loader.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#728CA4"));
+                    {
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
     }
 }

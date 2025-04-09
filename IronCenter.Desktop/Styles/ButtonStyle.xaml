@@ -314,6 +314,108 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <Style x:Key="UpdateButton" TargetType="{x:Type Button}">
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="sgnBr" CornerRadius="7"
+                   BorderThickness="1"
+                   BorderBrush="{DynamicResource TextColor}">
+                        <!-- Spinner -->
+                        <StackPanel Orientation="Vertical">
+
+                            <Label FontSize="16"
+                      Margin="5"
+                      x:Name="sgn_label"
+                      FontFamily="send-series"
+                      FontWeight="SemiBold"
+                      Foreground="{DynamicResource TextColor}"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Content="{TemplateBinding Content}"
+                      />
+                        </StackPanel>
+
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#022557"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="white"/>
+
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="sgnBr" Property="Background" Value="{DynamicResource ComponentColor}"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="{DynamicResource TextColor}"/>
+
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#022557"/>
+                            <!--<Setter TargetName="sgnBr"  Property="Visibility" Value="Collapsed"/>-->
+                            <Setter TargetName="sgnBr" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#0E72C8"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="DeleteButton" TargetType="{x:Type Button}">
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="sgnBr" CornerRadius="7"
+                   BorderThickness="1"
+                   BorderBrush="{DynamicResource TextColor}">
+                        <!-- Spinner -->
+                        <StackPanel Orientation="Vertical">
+
+                            <Label FontSize="16"
+                      Margin="5"
+                      x:Name="sgn_label"
+                      FontFamily="send-series"
+                      FontWeight="SemiBold"
+                      Foreground="{DynamicResource TextColor}"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Content="{TemplateBinding Content}"
+                      />
+                        </StackPanel>
+
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#710703"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="white"/>
+
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#B22222"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="{DynamicResource TextColor}"/>
+
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#710703"/>
+                            <!--<Setter TargetName="sgnBr"  Property="Visibility" Value="Collapsed"/>-->
+                            <Setter TargetName="sgnBr" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="#B22222"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
     <Style x:Key="menuButtonIcon" TargetType="icon:PackIconMaterial">
         <Setter Property="Margin" Value="20 0 0 0"/>
@@ -321,6 +423,12 @@
         <Setter Property="Height" Value="18"/>
         <Setter Property="Foreground" Value="{Binding Path=Foreground,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RadioButton}}}"/>
     </Style>
+
+
+    <Style x:Key="menuButtonIcon1" TargetType="Path">
+        <Setter Property="Fill" Value="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RadioButton}}}"/>
+    </Style>
+
 
     <Style x:Key="ProductCreateButton" TargetType="{x:Type Button}">
         <Setter Property="Margin" Value="10 0"/>
