@@ -1,5 +1,6 @@
 ﻿using IronCenter.Desktop.DbContexts;
 using IronCenter.Desktop.Pages.Dashboard.Products;
+using IronCenter.Desktop.Windows.Categories;
 using IronCenter.Desktop.Windows.Products;
 using IronCenter.Service.Domain.Categories;
 using IronCenter.Service.Domain.Products;
@@ -21,18 +22,18 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace IronCenter.Desktop.Controllers
+namespace IronCenter.Desktop.Controllers.Categories
 {
     /// <summary>
     /// Interaction logic for ProductController.xaml
     /// </summary>
-    public partial class ProductController : UserControl
+    public partial class CategoryController : UserControl
     {
-        public Products products;
-        public  ProductController(Products product)
+        public Category _category;
+        public CategoryController(Category category)
         {
             InitializeComponent();
-            this.products = products;
+            this._category= category;
              SizeAsync();
         }
 
@@ -60,15 +61,12 @@ namespace IronCenter.Desktop.Controllers
             }
         }
 
-        public Func<Task> Refresh { get; set; }
-        public void SetData(Product product)
+        public void SetData(Category category)
         {
-            txbName.Text = product.Name;
-            txbCategoryName.Text = product.CategoryName;
-            txbValue.Text = product.Value.ToString()+" dona mavjud";
-            txbId.Text = product.Id.ToString();
-            txbCategoryId.Text = product.CategoryId.ToString();
-            Image.ImageSource = new BitmapImage(new Uri(product.ImagePath));
+            txbDescription.Text = category.Description;
+            txbCategoryName.Text = category.Name;
+            txbId.Text = category.Id.ToString();
+            Image.ImageSource = new BitmapImage(new Uri(category.ImagePath));
         }
 
         public async Task DeleteAsync(){
@@ -77,26 +75,22 @@ namespace IronCenter.Desktop.Controllers
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            Product product = new Product();
-            product.Id = Convert.ToInt64(txbId.Text);
-            product.Name = txbName.Text;
-            product.CategoryId = Convert.ToInt64(txbCategoryId.Text);
-            product.CategoryName = txbCategoryName.Text;
-            ProductDeleteWindow productWindow = new ProductDeleteWindow(this, product);
+            Category category = new Category();
+            category.Id = Convert.ToInt64(txbId.Text);
+            category.Name = txbCategoryName.Text;
+            category.Description = txbDescription.Text;
+            CategoryDeleteWindow productWindow = new CategoryDeleteWindow(this, category);
             productWindow.ShowDialog();
-            productWindow.Closed += (s, e) => Refresh();
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            Product product = new Product();
-            product.Id = Convert.ToInt64(txbId.Text);
-            product.Name = txbName.Text;
-            product.CategoryId = Convert.ToInt64(txbCategoryId.Text);
-            product.CategoryName = txbCategoryName.Text;
-            ProductUpdateWindow productWindow = new ProductUpdateWindow(this,product);  
+            Category category = new Category();
+            category.Id = Convert.ToInt64(txbId.Text);
+            category.Name = txbCategoryName.Text;
+            category.Description = txbDescription.Text;
+            CategoryUpdateWindow productWindow = new CategoryUpdateWindow(category,this );
             productWindow.ShowDialog();
-            productWindow.Closed += (s, e) => Refresh();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

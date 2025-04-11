@@ -60,7 +60,7 @@
                                        FontFamily="Arial Narrow"
                                        Foreground="#FFF"></TextBlock>
                             <TextBlock x:Name="txbProductCCount"
-                                       Text="0"
+                                       Text="8"
                                        Margin="10 5 10 0"
                                        FontSize="25"
                                        FontFamily="Arial Narrow"
@@ -104,7 +104,7 @@
                         FontSize="16"
                         FontFamily="Arial Narrow"
                         Foreground="#FFF"></TextBlock>
-                            <TextBlock Text="0"
+                            <TextBlock Text="1500"
                         Margin="10 5 10 0"
                         FontSize="25"
                         FontFamily="Arial Narrow"
@@ -140,19 +140,19 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Path Grid.Column="0"
-               Data="{DynamicResource product}" Margin="20 30 0 30"
+               Data="{DynamicResource dashboardlogo31}" Margin="20 35 0 30"
                Fill="#FFF"
                Stretch="Fill" ></Path>
                         <StackPanel Grid.Column="1"
                      Orientation="Vertical"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Center">
-                            <TextBlock Text="Sotuvlar turi"
+                            <TextBlock Text="Kategoriyalar soni"
                         Margin="10 0 10 0"
                         FontSize="16"
                         FontFamily="Arial Narrow"
                         Foreground="#FFF"></TextBlock>
-                            <TextBlock Text="0"
+                            <TextBlock Text="3"
                         Margin="10 5 10 0"
                         FontSize="25"
                         FontFamily="Arial Narrow"
@@ -243,26 +243,26 @@ Margin="10">
                         <StackPanel  Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,0,0,0" >
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Ellipse Fill="BlueViolet" Width="20" Height="20" Margin="5"/>
-                                <TextBlock Text="Temir"    Foreground="#FFF"
+                                <TextBlock Text="Armatura"    Foreground="#FFF"
                                            FontSize="16" FontFamily="Arial Narrow" VerticalAlignment="Center" Margin="5 0"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Ellipse Fill="#FFFF9800" Width="20" Height="20" Margin="5"/>
-                                <TextBlock Text="Mis"
+                                <TextBlock Text="To‘rtburchak quvur"
                                               Foreground="#FFF"
    FontSize="16"
    FontFamily="Arial Narrow" VerticalAlignment="Center" Margin="5"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Ellipse Fill="#FF4CAF50" Width="20" Height="20" Margin="5"/>
-                                <TextBlock Text="Nikel"
+                                <TextBlock Text="Dumaloq quvur"
                                               Foreground="#FFF"
    FontSize="16"
    FontFamily="Arial Narrow" VerticalAlignment="Center" Margin="5"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Ellipse Fill="Blue" Width="20" Height="20" Margin="5"/>
-                                <TextBlock Text="Alyuminiy"    Foreground="#FFF"
+                                <TextBlock Text="List"    Foreground="#FFF"
    FontSize="16"
    FontFamily="Arial Narrow" VerticalAlignment="Center" Margin="5"/>
                             </StackPanel>

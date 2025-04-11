@@ -23,9 +23,5 @@ namespace IronCenter.Desktop.DbContexts
         public DbSet<Storage> Storages { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Sale> Sales { get; set; }
-
-        //public DbSet<Salary> Salaries { get; set; }
-        //public DbSet<Position> Positions { get; set; }
-        //public DbSet<Employee> Employees { get; set; }
     }
 }

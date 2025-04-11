@@ -1,4 +1,5 @@
 ﻿using IronCenter.Desktop.Pages.Calculator;
+using IronCenter.Desktop.Pages.Categories;
 using IronCenter.Desktop.Pages.Dashboard;
 using IronCenter.Desktop.Pages.Dashboard.Products;
 using IronCenter.Desktop.Pages.Sales;
@@ -78,10 +79,10 @@ namespace IronCenter.Desktop
 
         private void AsosiyButton_Click(object sender, RoutedEventArgs e)
         {
-            Title.Text = "Qoldiq mahsulotlar";
+            Title.Text = "Asosiy";
 
-            Ostatka ostatka = new Ostatka();
-            FrameFilter.Content = (ostatka);
+            Dashboard dashboard = new Dashboard();
+            FrameFilter.Content = dashboard;
         }
 
         private void MahsulotlarButton_Click(object sender, RoutedEventArgs e)
@@ -95,7 +96,7 @@ namespace IronCenter.Desktop
 
         private void KalkulatorButton_Click(object sender, RoutedEventArgs e)
         {
-            Title.Text = " Metall Kalkulator";
+            Title.Text = " Metall hisoblagich";
 
             CalculatorPage page = new CalculatorPage(this);
             FrameFilter.Content =(page);
@@ -103,7 +104,6 @@ namespace IronCenter.Desktop
 
         public async Task  UpdatePage()
         {
-            // Page'ni yangilash uchun kerakli amalni bajarish
             var page = this.Content as Products;
             if (page != null)
             {
@@ -133,6 +133,14 @@ namespace IronCenter.Desktop
 
             SalePage sale = new SalePage();
             FrameFilter.Content =(sale);
+        }
+
+        private void CategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            Title.Text = "Kategoriyalar";
+
+            CategoryPage page = new CategoryPage();
+            FrameFilter.Content = (page);
         }
     }
 }

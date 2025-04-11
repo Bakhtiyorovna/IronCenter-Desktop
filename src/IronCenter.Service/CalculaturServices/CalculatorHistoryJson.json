@@ -79,5 +79,59 @@
     "valueFour": 33.0,
     "ResultvalueOne": 148.71563924148404,
     "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 10.0,
+    "valueTwo": 20.0,
+    "valueThree": 0.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 0.0,
+    "ResultvalueTwo": 32.439
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 10.0,
+    "valueTwo": 0.0,
+    "valueThree": 100.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 61.654,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Dumaloq quvur",
+    "valueOne": 20.0,
+    "valueTwo": 2.0,
+    "valueThree": 10.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 8.87599990648319,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Dumaloq quvur",
+    "valueOne": 20.0,
+    "valueTwo": 2.0,
+    "valueThree": 0.0,
+    "valueFour": 80.0,
+    "ResultvalueOne": 90.13069044938428,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 10.0,
+    "valueTwo": 0.0,
+    "valueThree": 8.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 4.932,
+    "ResultvalueTwo": 0.0
+  },
+  {
+    "AssortimentName": "Armatura",
+    "valueOne": 10.0,
+    "valueTwo": 20.0,
+    "valueThree": 0.0,
+    "valueFour": 0.0,
+    "ResultvalueOne": 0.0,
+    "ResultvalueTwo": 32.439
   }
 ]

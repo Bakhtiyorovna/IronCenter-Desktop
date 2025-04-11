@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IronCenter.Desktop.Windows.Products"
         mc:Ignorable="d"
-        Title="BuyerProductCreateWindow" Height="350" Width="500"
+        Title="BuyerProductCreateWindow" Height="450" Width="500"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
@@ -89,18 +89,38 @@
                                 Style="{DynamicResource CalculatorImputTextBox}">
 
                             </TextBox>
+                            <Grid>
+                                <Label Content="Mahsulot rasmi"
+FontSize="16"
+Margin="13 5 5 0"
+Foreground="{DynamicResource DimTextColor}"
+/>
+
+                                <!-- Button for selecting image -->
+                                <Button Content="Rasm Tanlash" 
+                            VerticalAlignment="Top" 
+                            Style="{DynamicResource CalSolveButton}"
+                            Margin="10,40,10,0" Click="Button_Click"
+                            Foreground="White" FontSize="16" BorderBrush="White" 
+                            BorderThickness="2"
+                       />
+                            </Grid>
                         </StackPanel>
 
                     </Grid>
 
-                  
-                  
 
-                 
+                    <Label Content="Iltimos, ma'lumotlarni tekshirib, 'Qo‘shish' tugmasini bosing."
+FontSize="16"
+Margin="13 15 0 0"
+Foreground="{DynamicResource DimTextColor}"
+/>
+
+
 
                     <Button
  Height="40"
- Margin="10 30"
+ Margin="10 10 10 20"
  Content="Qo'shish"
  Style="{DynamicResource CalSolveButton}"
  VerticalAlignment="Bottom"

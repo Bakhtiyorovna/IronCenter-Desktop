@@ -104,7 +104,7 @@ namespace IronCenter.Desktop.Windows.Storages
                     var result = dbContext.SaveChanges();
                     if (result > 0)
                     {
-                        MessageBox.Show("Mahsulot muvaffaqiyatli saqlandi!");
+                        MessageBox.Show("Mahsulot omborga muvaffaqiyatli qo‘shildi!");
                         this.Close();
                     }
                 }

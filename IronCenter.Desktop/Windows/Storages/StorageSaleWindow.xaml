@@ -121,7 +121,7 @@
                     <Button
  Height="40"
  Margin="10 30"
- Content="Qo'shish"
+ Content="Sotuvni qo'shish"
  Style="{DynamicResource CalSolveButton}"
  VerticalAlignment="Bottom"
                         Click="Button_Click"

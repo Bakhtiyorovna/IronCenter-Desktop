@@ -117,12 +117,12 @@ Style="{DynamicResource menuButton}" >
                 </RadioButton>
 
                 <RadioButton x:Name="AsosiyButton6"
-                    Click="AsosiyButton_Click" 
+                    Click="CategoryButton_Click" 
                     Style="{DynamicResource menuButton}" >
                     <StackPanel Orientation="Horizontal">
                         <Path Data="{DynamicResource astatka}" Height="16" Width="18"
                     Style="{DynamicResource menuButtonIcon1}" Stretch="Fill"  Margin="20 0 0 0"></Path>
-                        <TextBlock Text="Qoldiq mahsulotlar" Style="{DynamicResource menuButtonText}"/>
+                        <TextBlock Text="Kategoriyalar" Style="{DynamicResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
 
@@ -136,16 +136,7 @@ Style="{DynamicResource menuButton}" >
                     </StackPanel>
                 </RadioButton>
 
-                <RadioButton x:Name="AsosiyButton11"
-                    Click="AsosiyButton_Click" 
-                    Style="{DynamicResource menuButton}" >
-                    <StackPanel Orientation="Horizontal">
-                       <Path Data="{DynamicResource info}" Height="16" Width="18"
-                             Style="{StaticResource menuButtonIcon1}"
-                             Stretch="Fill" Margin="20 0 0 0"></Path>
-                        <TextBlock Text="Ma'lumotlar" Style="{DynamicResource menuButtonText}"/>
-                    </StackPanel>
-                </RadioButton>
+               
 
               
 
@@ -153,7 +144,6 @@ Style="{DynamicResource menuButton}" >
             <Border Grid.Column="1" Grid.Row="1" >
                 <Frame x:Name="FrameFilter" NavigationUIVisibility="Hidden" Margin="10 10 10 0"
                        >
-
                 </Frame>
             </Border>
         </Grid>

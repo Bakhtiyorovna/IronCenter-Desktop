@@ -60,7 +60,7 @@ namespace IronCenter.Desktop.Windows.Storages
                     this.Show();
                 }
                 sale.UnitPrice = Convert.ToInt32(txtProductPrice.Text);
-                sale.TotalPrice = sale.Quantity* sale.UnitPrice;
+                sale.Income = sale.Quantity* sale.UnitPrice;
                 sale.SaleDate = sale.CreatedAt  = DateTime.Now.ToUniversalTime();
                 sale.UpdatedAt = DateTime.Now.ToUniversalTime();
 
@@ -73,9 +73,9 @@ namespace IronCenter.Desktop.Windows.Storages
                     int result = dbContext.SaveChanges();
                     if (result > 0)
                     {
-                        MessageBox.Show("Sotuv muvofaqiyatli saqlandi!");
+                        MessageBox.Show("Sotuv muvaffaqiyatli saqlandi!");
 
-                        _storageController.SetData(_storage);
+                        _storageController.SetData(_storage,"");
                         this.Close();
                     }
                 }

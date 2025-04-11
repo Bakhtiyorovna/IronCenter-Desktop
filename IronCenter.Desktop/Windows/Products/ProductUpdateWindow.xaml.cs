@@ -84,7 +84,6 @@ namespace IronCenter.Desktop.Windows.Products
                              product.CategoryName = category.Name;
                         }
 
-                        
                         dbContext.Products.Update(product);  
                         var result = await dbContext.SaveChangesAsync() > 0;  
 
@@ -94,7 +93,6 @@ namespace IronCenter.Desktop.Windows.Products
 
                             productController.SetData(product);
                             this.Close();
-
                         }
                         else
                             MessageBox.Show("Xatolik: Mahsulot yangilanmadi.");

@@ -30,7 +30,7 @@
         <Border Height="150" Width="200" HorizontalAlignment="Left" Margin="0"  Grid.Column="0" CornerRadius="15 0 0 15">
 
             <Border.Background>
-                <ImageBrush ImageSource="D:\Proekts\DotNet\IronCenter-Desktop\IronCenter.Desktop\Assets\Images\ProductImages\ArmaturaPicture.jpg"></ImageBrush>
+                <ImageBrush x:Name="Image" ImageSource="D:\Proekts\DotNet\IronCenter-Desktop\IronCenter.Desktop\Assets\Images\ProductImages\ArmaturaPicture.jpg"></ImageBrush>
             </Border.Background>
         </Border>
         <StackPanel Grid.Column="1">

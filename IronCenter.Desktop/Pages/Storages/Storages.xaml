@@ -103,6 +103,14 @@
         </Grid>
         </Border>
 
+        <TextBlock
+      x:Name="loader"
+      FontSize="16"
+      Text="Siz qidirgan mahsulot mavjud emas. Iltimos, boshqa so‘z kiriting."
+      VerticalAlignment="Center"
+      Foreground="Transparent"
+      HorizontalAlignment="Center"></TextBlock>
+
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  Margin="10 90 10 60">
             <ScrollViewer.Resources>
                 <Style TargetType="ScrollBar">

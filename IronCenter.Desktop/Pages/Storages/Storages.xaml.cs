@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using IronCenter.Service.Domain.Storages;
 using Microsoft.Identity.Client.Extensions.Msal;
+using System.Windows.Media;
 
 namespace IronCenter.Desktop.Pages.Storages
 {
@@ -30,19 +31,30 @@ namespace IronCenter.Desktop.Pages.Storages
 
         public async Task Refresh()
         {
+            List<string> pictures = new List<string> {
+           "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\ArmaturaPicture.jpg",
+           "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\List.jpg",
+           "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\lampochka.jpg",
+           "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\Dquvur.jpg",
+           "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\Uzaytirgich.jpg"
+                };
             await using (var dbContext = new AppDbContext())
             {
                 wrpCourses.Children.Clear();
 
                 var storagies = await dbContext.Storages.ToListAsync();
                 long count = storagies.Count;
+                int i = 0;
                 foreach (var storage in storagies.AsEnumerable().Reverse())
                 {
+                    
                     txbProductCount.Text = count.ToString() + " turdagi mahsulot mavjud";
                     StorageController Controller = new StorageController(this, storage);
-                    Controller.SetData(storage);
+                    Controller.SetData(storage, pictures[i]);
+                    i++;
                     wrpCourses.Children.Add(Controller);
                 }
+                i = 0;
             }
             ;
         }
@@ -89,12 +101,20 @@ namespace IronCenter.Desktop.Pages.Storages
                         {
 
                             StorageController Controller = new StorageController(this, storage);
-                            Controller.SetData(storage);
+                            Controller.SetData(storage, "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\List.jpg");
                             wrpCourses.Children.Add(Controller);
                             count++;
                         }
                     }
                     txbProductCount.Text = count.ToString() + " natija mavjud";
+                    if (count == 0)
+                    {
+                        loader.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#728CA4"));
+                    }
+                    else
+                    {
+                        loader.Foreground = new SolidColorBrush(Colors.Transparent);
+                    }
                 }
             }
             catch (Exception ex)
