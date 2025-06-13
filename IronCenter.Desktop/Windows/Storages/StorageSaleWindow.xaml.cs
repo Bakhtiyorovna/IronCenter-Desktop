@@ -15,6 +15,7 @@ using IronCenter.Service.Domain.Storages;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using IronCenter.Service.Enums;
 using IronCenter.Desktop.Controllers;
+using Microsoft.EntityFrameworkCore;
 
 namespace IronCenter.Desktop.Windows.Storages
 {
@@ -59,6 +60,7 @@ namespace IronCenter.Desktop.Windows.Storages
                     MessageBox.Show("Mahsulot yetarli emas!", "Xatolik", MessageBoxButton.OK, MessageBoxImage.Error);
                     this.Show();
                 }
+
                 sale.UnitPrice = Convert.ToInt32(txtProductPrice.Text);
                 sale.Income = sale.Quantity* sale.UnitPrice;
                 sale.SaleDate = sale.CreatedAt  = DateTime.Now.ToUniversalTime();
@@ -66,17 +68,37 @@ namespace IronCenter.Desktop.Windows.Storages
 
                 using (var dbContext = new AppDbContext())
                 {
-                    dbContext.Sales.Add(sale);
-
-                    _storage.PeresentValue = _storage.Quantity - sale.Quantity;
+                    _storage.PeresentValue = _storage.PeresentValue - sale.Quantity;
+                  
                     dbContext.Storages.Update(_storage);
+                    dbContext.Sales.Add(sale);
                     int result = dbContext.SaveChanges();
+
                     if (result > 0)
                     {
-                        MessageBox.Show("Sotuv muvaffaqiyatli saqlandi!");
+                       
+                    }
+                }
+                using (var dbContext = new AppDbContext())
+                {
+                    var productItem = dbContext.Products
+                           .Where(ea => ea.Id == _storage.ProductId)
+                           .AsNoTracking()
+                           .FirstOrDefault();
 
-                        _storageController.SetData(_storage,"");
-                        this.Close();
+                    if (productItem != null)
+                    {
+                        productItem.Value = productItem.Value - sale.Quantity;
+
+                        dbContext.Update(productItem);
+                        int result1 = dbContext.SaveChanges();
+                        if (result1 > 0)
+                        {
+                            MessageBox.Show("Sotuv muvaffaqiyatli saqlandi!");
+
+                            _storageController.SetData(_storage);
+                            this.Close();
+                        }
                     }
                 }
             }

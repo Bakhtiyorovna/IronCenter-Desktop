@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.ComponentModel;
+using Microsoft.Win32;
+using System.IO;
 
 namespace IronCenter.Desktop.Windows.Categories
 {
@@ -18,6 +20,8 @@ namespace IronCenter.Desktop.Windows.Categories
     /// </summary>
     public partial class CategoryCreateWindow : Window
     {
+        public string destinationFolder = "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\CategoryImages\\";
+        public string imagePath="";
         public CategoryCreateWindow()
         {
             InitializeComponent();
@@ -32,7 +36,7 @@ namespace IronCenter.Desktop.Windows.Categories
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            if (string.IsNullOrWhiteSpace(txtcategoryName.Text) || txbDescription.Text == null)
+            if (string.IsNullOrWhiteSpace(txtcategoryName.Text) || txbDescription.Text == null || imagePath=="" )
             {
                 MessageBox.Show("Iltimos, barcha maydonlarni to'ldiring.", "Xatolik", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -44,6 +48,7 @@ namespace IronCenter.Desktop.Windows.Categories
                 {
                     Name = txtcategoryName.Text,
                     Description = txbDescription.Text,
+                    ImagePath = imagePath,
                     CreatedAt  = DateTime.Now.ToUniversalTime(),
                     UpdatedAt = DateTime.Now.ToUniversalTime()
                 };
@@ -60,6 +65,27 @@ namespace IronCenter.Desktop.Windows.Categories
                 }
             }
             catch(Exception ex) { }
+        }
+
+        private void BtnPicture(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+            if(openFileDialog.ShowDialog() == true)
+            {
+                string imgPath = openFileDialog.FileName;
+
+                string extension = Path.GetExtension(imgPath);
+
+                string newFileName = Guid.NewGuid().ToString()+"_categoryPicture" + extension;
+
+                string destinationPath = Path.Combine(destinationFolder, newFileName);
+
+                File.Copy(imgPath, destinationPath, overwrite: true);
+
+                imagePath = destinationPath;
+                BtnPitureName.Content = "Rasm tanlandi";
+            }
         }
     }
 }

@@ -1,17 +1,11 @@
-﻿using IronCenter.Service.DataAccess.Interfaces;
-using IronCenter.Service.DataAccess.Repositories;
-using IronCenter.Service.Domain.Categories;
-using IronCenter.Service.Domain.Products;
-using IronCenter.Service.Services.Interfaces;
-using IronCenter.Service.Services.Services;
+﻿using IronCenter.Service.Domain.Categories;
 using IronCenter.Desktop.DbContexts;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System.Threading.Tasks;
 using System.Windows;
-using System.ComponentModel;
 using IronCenter.Desktop.Controllers.Categories;
-using SkiaSharp;
+using System.Drawing;
+using Microsoft.Win32;
+using System.IO;
 
 namespace IronCenter.Desktop.Windows.Categories
 {
@@ -21,7 +15,10 @@ namespace IronCenter.Desktop.Windows.Categories
     public partial class CategoryUpdateWindow : Window
     {
         public CategoryController CategoryController { get; set; }
-        public Category Category { get; set; } 
+        public Category Category { get; set; }
+        public string imagePath = "";
+        public string destinationFolder = "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\CategoryImages\\";
+        public string deleteImagePath;
         public CategoryUpdateWindow(Category category, CategoryController controller)
         {
             InitializeComponent();
@@ -56,23 +53,54 @@ namespace IronCenter.Desktop.Windows.Categories
                            .Where(ea => ea.Id == Id)
                            .AsNoTracking()
                            .FirstOrDefaultAsync();
-
-                category = new Category
+                if (category != null)
                 {
-                    Name = txtcategoryName.Text,
-                    Description = txbDescription.Text,
-                    UpdatedAt = DateTime.Now.ToUniversalTime()
-                };
+                    if (imagePath == "")
+                    {
+                        imagePath = category.ImagePath;
+                    }
+                    else
+                    {
+                        deleteImagePath = category.ImagePath;
+                    }
 
-                dbContext.Update(category);
-                var result = dbContext.SaveChanges();
-                if (result > 0)
-                {
-                    MessageBox.Show("Kategoriya muvaffaqiyatli yangilandi!");
-                    CategoryController.SetData(category);
-                    this.Close();
+                    category.ImagePath = imagePath;
+                    category.Name = txtcategoryName.Text;
+                    category.Description = txbDescription.Text;
+                    category.UpdatedAt = DateTime.Now.ToUniversalTime();
+
+                    dbContext.Update(category);
+                    var result = dbContext.SaveChanges();
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Kategoriya muvaffaqiyatli yangilandi!");
+                        CategoryController.SetData(category);
+                        this.Close();
+                  //      File.Delete(deleteImagePath);
+                    }
                 }
+            }
+        }
 
+        private void BtnPicture(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string imgPath = openFileDialog.FileName;
+
+                string extension = Path.GetExtension(imgPath);
+
+                string newFileName = Guid.NewGuid().ToString() + "_categoryPicture" + extension;
+
+                string destinationPath = Path.Combine(destinationFolder, newFileName);
+
+                File.Copy(imgPath, destinationPath, overwrite: true);
+
+
+                imagePath = destinationPath;
+                BtnPitureName.Content = "Rasm o'zgartirildi";
             }
         }
     }

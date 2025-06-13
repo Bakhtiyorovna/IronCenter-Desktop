@@ -1,27 +1,11 @@
 ﻿using IronCenter.Desktop.DbContexts;
-using IronCenter.Desktop.Pages.Dashboard.Products;
-using IronCenter.Desktop.Windows.Products;
 using IronCenter.Service.Domain.Products;
-using IronCenter.Service.Domain.Sales;
 using IronCenter.Service.Domain.Storages;
 using IronCenter.Service.Enums;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace IronCenter.Desktop.Controllers.Sale
 {
@@ -67,7 +51,7 @@ namespace IronCenter.Desktop.Controllers.Sale
 
         public async void SetData(IronCenter.Service.Domain.Sales.Sale sale, int number)
         {
-            USD = await IronCenter.Desktop.Helpers.GetUsdRate.GetUsdRateFromCbuAsync();
+            USD = await IronCenter.Desktop.Helpers.GetUsdRate.UzGetUsdRateFromCbuAsync();
             var storage = new Storage();
             var product = new Product();
             using (var dbContext = new AppDbContext())

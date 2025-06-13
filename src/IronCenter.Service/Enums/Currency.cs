@@ -4,7 +4,7 @@
     {
         UZS,    // O'zbekiston so'mi
         USD,    // AQSh dollari
-        EUR,    // Yevro
-        RUB,    // Rossiya rubli
+        //EUR,    // Yevro
+        //RUB,    // Rossiya rubli
     }
 }

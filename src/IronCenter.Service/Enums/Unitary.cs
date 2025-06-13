@@ -10,6 +10,7 @@ namespace IronCenter.Service.Enums
     {
         kg,
         metr,
-        dona
+        dona,
+        tonna
     }
 }

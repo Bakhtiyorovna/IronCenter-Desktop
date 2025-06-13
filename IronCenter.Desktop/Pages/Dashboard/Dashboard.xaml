@@ -60,7 +60,7 @@
                                        FontFamily="Arial Narrow"
                                        Foreground="#FFF"></TextBlock>
                             <TextBlock x:Name="txbProductCCount"
-                                       Text="8"
+                                       Text="0"
                                        Margin="10 5 10 0"
                                        FontSize="25"
                                        FontFamily="Arial Narrow"
@@ -104,7 +104,8 @@
                         FontSize="16"
                         FontFamily="Arial Narrow"
                         Foreground="#FFF"></TextBlock>
-                            <TextBlock Text="1500"
+                            <TextBlock x:Name="TxbProductValue"
+                                Text="0"
                         Margin="10 5 10 0"
                         FontSize="25"
                         FontFamily="Arial Narrow"
@@ -152,7 +153,8 @@
                         FontSize="16"
                         FontFamily="Arial Narrow"
                         Foreground="#FFF"></TextBlock>
-                            <TextBlock Text="3"
+                            <TextBlock  x:Name="TxbCategoryValue"
+                                Text="0"
                         Margin="10 5 10 0"
                         FontSize="25"
                         FontFamily="Arial Narrow"
@@ -217,22 +219,29 @@ Margin="10">
                             <lvc:PieChart x:Name="pieChart" 
                                       >
                                 <lvc:PieChart.Series>
-                                    <lvc:PieSeries Title="Temir" 
-                               Values="40"
+                                    <lvc:PieSeries 
+                                        x:Name="LblValeuOne"
+                                        Title="Temir" 
+                                        Values="60"
                                DataLabels="True"
                                Fill="BlueViolet" />
 
-                                    <lvc:PieSeries Title="Mis" 
+                                    <lvc:PieSeries x:Name="LblValueTwo"
+                                        Title="Mis" 
                                Values="30"
                                DataLabels="True"
                                Fill="#FFFF9800" />
 
-                                    <lvc:PieSeries Title="Nikel" 
+                                    <lvc:PieSeries
+                                        x:Name="LblValueThree"
+                                        Title="Nikel" 
                                Values="20"
                                DataLabels="True"
                                Fill="#FF4CAF50" />
 
-                                    <lvc:PieSeries Title="Alyuminiy" 
+                                    <lvc:PieSeries 
+                                        x:Name="LblValueFour"
+                                        Title="Alyuminiy" 
                                Values="10"
                                DataLabels="True"
                                Fill="Blue" />
@@ -243,26 +252,31 @@ Margin="10">
                         <StackPanel  Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,0,0,0" >
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Ellipse Fill="BlueViolet" Width="20" Height="20" Margin="5"/>
-                                <TextBlock Text="Armatura"    Foreground="#FFF"
+                                <TextBlock x:Name="TxbValueone"
+                                    Text="Armatura"    Foreground="#FFF"
                                            FontSize="16" FontFamily="Arial Narrow" VerticalAlignment="Center" Margin="5 0"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Ellipse Fill="#FFFF9800" Width="20" Height="20" Margin="5"/>
-                                <TextBlock Text="To‘rtburchak quvur"
+                                <TextBlock
+                                    x:Name="TxbValueTwo"
+                                    Text="To‘rtburchak quvur"
                                               Foreground="#FFF"
    FontSize="16"
    FontFamily="Arial Narrow" VerticalAlignment="Center" Margin="5"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Ellipse Fill="#FF4CAF50" Width="20" Height="20" Margin="5"/>
-                                <TextBlock Text="Dumaloq quvur"
+                                <TextBlock x:Name="TxbValueThree"
+                                    Text="Dumaloq quvur"
                                               Foreground="#FFF"
    FontSize="16"
    FontFamily="Arial Narrow" VerticalAlignment="Center" Margin="5"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Ellipse Fill="Blue" Width="20" Height="20" Margin="5"/>
-                                <TextBlock Text="List"    Foreground="#FFF"
+                                <TextBlock x:Name="TxbValueFour"
+                                    Text="List"    Foreground="#FFF"
    FontSize="16"
    FontFamily="Arial Narrow" VerticalAlignment="Center" Margin="5"/>
                             </StackPanel>

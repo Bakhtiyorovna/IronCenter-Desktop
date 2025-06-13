@@ -98,8 +98,9 @@ namespace IronCenter.Desktop.Windows.Storages
                     long Id = (long)cmbProduct.SelectedValue;
                     var product = dbContext.Products.Find(Id);
 
+                    product.Value = product.Value + storage.Quantity;
+                    
                     storage.Product = product;
-
                     dbContext.Add(storage);
                     var result = dbContext.SaveChanges();
                     if (result > 0)

@@ -1,25 +1,11 @@
 ﻿using IronCenter.Desktop.DbContexts;
 using IronCenter.Desktop.Pages.Dashboard.Products;
 using IronCenter.Desktop.Windows.Products;
-using IronCenter.Service.Domain.Categories;
 using IronCenter.Service.Domain.Products;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace IronCenter.Desktop.Controllers
 {
@@ -65,7 +51,15 @@ namespace IronCenter.Desktop.Controllers
         {
             txbName.Text = product.Name;
             txbCategoryName.Text = product.CategoryName;
-            txbValue.Text = product.Value.ToString()+" dona mavjud";
+            using (var dbContext = new AppDbContext())
+            {
+                var storage =  dbContext.Storages
+                           .Where(ea => ea.ProductId == product.Id)
+                           .AsNoTracking()
+                           .FirstOrDefault();
+                if (storage != null) { txbValue.Text = product.Value.ToString() +" "+ storage.Unitary.ToString()+" mavjud"; }
+            }
+            
             txbId.Text = product.Id.ToString();
             txbCategoryId.Text = product.CategoryId.ToString();
             Image.ImageSource = new BitmapImage(new Uri(product.ImagePath));

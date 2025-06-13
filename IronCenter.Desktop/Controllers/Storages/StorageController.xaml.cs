@@ -62,7 +62,7 @@ namespace IronCenter.Desktop.Controllers
             }
         }
 
-        public void SetData(IronCenter.Service.Domain.Storages.Storage storage, string Imagepath)
+        public void SetData(IronCenter.Service.Domain.Storages.Storage storage)
         {
             var product = new Product();
 
@@ -83,7 +83,7 @@ namespace IronCenter.Desktop.Controllers
             txbPresentQuintity.Text = storage.PeresentValue.ToString()+" "+storage.Unitary+" mavjud";
             txbSaleQuintity.Text = (storage.Quantity - storage.PeresentValue).ToString()+ " " + storage.Unitary + " sotilgan";
             txbId.Text = storage.Id.ToString();
-            Image.ImageSource = new BitmapImage(new Uri(Imagepath));
+            Image.ImageSource = new BitmapImage(new Uri(storage.Product.ImagePath));
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -95,7 +95,7 @@ namespace IronCenter.Desktop.Controllers
         {
             StorageSaleWindow storageSaleWindow = new StorageSaleWindow(this,_storage);
             storageSaleWindow.Show();
-            storageSaleWindow.Closed += (s, e) => SetData(_storage,"");
+            storageSaleWindow.Closed += (s, e) => SetData(_storage);
         }
     }
 }

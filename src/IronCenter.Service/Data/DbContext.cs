@@ -11,7 +11,7 @@ namespace IronCenter.Service.Data
     public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
-       : base(options)
+        : base(options)
         {
 
         }
@@ -31,6 +31,7 @@ namespace IronCenter.Service.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Storage>()
                 .HasOne(i => i.Product)
                 .WithMany(p => p.Storages)

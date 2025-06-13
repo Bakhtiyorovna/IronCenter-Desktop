@@ -97,10 +97,11 @@ Foreground="{DynamicResource DimTextColor}"
 />
 
                                 <!-- Button for selecting image -->
-                                <Button Content="Rasm Tanlash" 
+                                <Button x:Name="BtnPictureName"
+                                    Content="Rasm tanlash" 
                             VerticalAlignment="Top" 
                             Style="{DynamicResource CalSolveButton}"
-                            Margin="10,40,10,0" Click="Button_Click"
+                            Margin="10,40,10,0" Click="BtnPicture_Click"
                             Foreground="White" FontSize="16" BorderBrush="White" 
                             BorderThickness="2"
                        />

@@ -10,7 +10,9 @@ using SkiaSharp;
 using System.ComponentModel;
 using LiveCharts;
 using IronCenter.Desktop.DbContexts;
-using Microsoft.EntityFrameworkCore; // Rasm va ranglar uchun
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Runtime.CompilerServices; // Rasm va ranglar uchun
 
 namespace IronCenter.Desktop.Pages.Dashboard
 {
@@ -21,10 +23,6 @@ namespace IronCenter.Desktop.Pages.Dashboard
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ChartValues<double> TemirValues { get; set; }
-        public ChartValues<double> MisValues { get; set; }
-        public ChartValues<double> NikelValues { get; set; }
-        public ChartValues<double> AlyuminiyValues { get; set; }
 
         private ChartValues<int> _sotuvlar;
         public ChartValues<int> Sotuvlar
@@ -83,10 +81,23 @@ namespace IronCenter.Desktop.Pages.Dashboard
                 using (var dbContext = new AppDbContext())
                 {
                     var products = await dbContext.Products.ToListAsync();
-
+                    var categorys = await dbContext.Categories.ToListAsync();
+                    int productValue = 0;
+                    for (int i = 0; i < products.Count; i++)
+                    {
+                        productValue += products[i].Value;
+                    }
                     if (products.Count > 0)
                     {
                         txbProductCCount.Text = products.Count.ToString();
+                    }
+                    if(productValue > 0)
+                    {
+                        TxbProductValue.Text = productValue.ToString();
+                    }
+                    if(categorys.Count > 0)
+                    {
+                        TxbCategoryValue.Text = categorys.Count.ToString();
                     }
                 }
             }
@@ -96,14 +107,52 @@ namespace IronCenter.Desktop.Pages.Dashboard
             }
         }
 
-        private void LoadPieChartData()
+        private async Task LoadPieChartData()
         {
-            TemirValues = new ChartValues<double> { 40 };
-            MisValues = new ChartValues<double> { 30 };
-            NikelValues = new ChartValues<double> { 20 };
-            AlyuminiyValues = new ChartValues<double> { 10 };
+            using (var dbContext = new AppDbContext())
+            {
+                var products = await dbContext.Products.ToListAsync();
 
-            DataContext = this; 
+                Dictionary<string, int> dict = new Dictionary<string, int>();
+
+                foreach (var product in products)
+                {
+                    var storages = await dbContext.Storages.Where(ea => ea.ProductId == product.Id).ToListAsync();
+                    int salevalue = 0;
+                    if (storages != null)
+                    {
+                        
+                        for (int i = 0; i < storages.Count; i++)
+                        {
+                            salevalue += storages[i].Quantity - storages[i].PeresentValue;
+                        }
+                    }
+                    dict.Add(product.Name, salevalue);
+                }
+
+                var valueOne = dict.OrderByDescending(x => x.Value).First();
+                LblValeuOne.Values = new ChartValues<double> { Convert.ToDouble(valueOne.Value) };
+                TxbValueone.Text = LblValeuOne.Title = $"{valueOne.Key}";
+                dict.Remove(valueOne.Key);
+
+                var valueTwo = dict.OrderByDescending (x => x.Value).First();
+                LblValueTwo.Values = new ChartValues<double> { Convert.ToDouble(valueTwo.Value) };
+                TxbValueTwo.Text = LblValueTwo.Title = $"{valueTwo.Key}";
+                dict.Remove(valueTwo.Key);
+
+                var valueThree = dict.OrderByDescending (x => x.Value).First();
+                LblValueThree.Values = new ChartValues<double> { Convert.ToDouble(valueThree.Value) };
+                TxbValueThree.Text = LblValueThree.Title = $"{valueThree.Key}";
+                dict.Remove(valueThree.Key);
+
+                var valueFour = dict.OrderByDescending(x => x.Value).First();
+                LblValueFour.Values = new ChartValues<double> { Convert.ToDouble(valueFour.Value) };
+                TxbValueFour.Text = LblValueFour.Title = $"{valueFour.Key}";
+                dict.Remove(valueFour.Key);
+
+                DataContext = this; 
+            }
+            
         }
     }
 }

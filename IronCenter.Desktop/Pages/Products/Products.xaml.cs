@@ -30,24 +30,14 @@ namespace IronCenter.Desktop.Pages.Dashboard.Products
 
         public async Task  Refresh()
         {
-            List<string> pictures = new List<string> {
-           "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\ArmaturaPicture.jpg",
-           "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\Uzaytirgich.jpg",
-           "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\List.jpg",
-           "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\Dquvur.jpg",
-           "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\Uzaytirgich.jpg"
-                };
             await using (var dbContext = new AppDbContext())
             {
                 wrpCourses.Children.Clear();
 
                 var products = await dbContext.Products.ToListAsync();
                 long count = products.Count;
-                int i= 0;
                 foreach (var product in products.AsEnumerable().Reverse())
                 {
-                    product.ImagePath = pictures[i];
-                    i++;
                     txbProductCount.Text = count.ToString()+" turdagi mahsulot mavjud";
                     ProductController productController = new ProductController(this);
                     productController.SetData(product);

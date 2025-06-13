@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.ComponentModel;
+using Microsoft.Win32;
+using System.IO;
 
 namespace IronCenter.Desktop.Windows.Products
 {
@@ -18,6 +20,8 @@ namespace IronCenter.Desktop.Windows.Products
     /// </summary>
     public partial class ProductCreateWindow : Window
     {
+        public string destinationFolder = "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\";
+        public string imagePath = "";
         public ProductCreateWindow()
         {
             InitializeComponent();
@@ -55,7 +59,7 @@ namespace IronCenter.Desktop.Windows.Products
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            if (string.IsNullOrWhiteSpace(txtProductName.Text) || cmbCategory.SelectedItem == null)
+            if (string.IsNullOrWhiteSpace(txtProductName.Text) || cmbCategory.SelectedItem == null|| imagePath=="")
             {
                 MessageBox.Show("Iltimos, barcha maydonlarni to'ldiring.", "Xatolik", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -67,6 +71,7 @@ namespace IronCenter.Desktop.Windows.Products
                 {
                     Name = txtProductName.Text,
                     Value = 0,
+                    ImagePath = imagePath,
                     CategoryId =(long)cmbCategory.SelectedValue
                 };
                 
@@ -87,6 +92,28 @@ namespace IronCenter.Desktop.Windows.Products
                 }
             }
             catch(Exception ex) { }
+        }
+
+        private void BtnPicture_Click(object sender, RoutedEventArgs e)
+        {
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string imgPath = openFileDialog.FileName;
+
+                string extension = Path.GetExtension(imgPath);
+
+                string newFileName = Guid.NewGuid().ToString() + "_productPicture" + extension;
+
+                string destinationPath = Path.Combine(destinationFolder, newFileName);
+
+                File.Copy(imgPath, destinationPath, overwrite: true);
+
+                imagePath = destinationPath;
+                BtnPictureName.Content = "Rasm tanlandi";
+            }
         }
     }
 }

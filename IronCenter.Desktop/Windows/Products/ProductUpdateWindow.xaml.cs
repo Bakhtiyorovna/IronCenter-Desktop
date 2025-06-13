@@ -14,6 +14,8 @@ using System.Windows.Controls;
 using System.Xml.Linq;
 using IronCenter.Desktop.Controllers;
 using Azure;
+using Microsoft.Win32;
+using System.IO;
 
 namespace IronCenter.Desktop.Windows.Products
 {
@@ -22,6 +24,8 @@ namespace IronCenter.Desktop.Windows.Products
     /// </summary>
     public partial class ProductUpdateWindow : Window
     {
+        public string destinationFolder = "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\ProductImages\\";
+        public string imagePath = "";
         public long Id;
         public Product product;
         public ProductController productController;
@@ -75,13 +79,17 @@ namespace IronCenter.Desktop.Windows.Products
 
                     if (product != null)
                     {
-                        // Update qilish uchun, Product'ni yangilash
+                        if (imagePath != "")
+                        {
+                            product.ImagePath = imagePath;
+                        }
                         product.Name = txtProductName.Text;
                         if (cmbCategory.SelectedValue is not null){
                              product.CategoryId = (long)cmbCategory.SelectedValue;
                              long CategoryId = (long)cmbCategory.SelectedValue;
                              var category = dbContext.Categories.Find(CategoryId);
                              product.CategoryName = category.Name;
+                             product.UpdatedAt = DateTime.Now.ToUniversalTime();
                         }
 
                         dbContext.Products.Update(product);  
@@ -109,6 +117,27 @@ namespace IronCenter.Desktop.Windows.Products
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Updateasync();
+        }
+
+        private void BtnPictureName_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string imgPath = openFileDialog.FileName;
+
+                string extension = Path.GetExtension(imgPath);
+
+                string newFileName = Guid.NewGuid().ToString() + "_productPicture" + extension;
+
+                string destinationPath = Path.Combine(destinationFolder, newFileName);
+
+                File.Copy(imgPath, destinationPath, overwrite: true);
+
+                imagePath = destinationPath;
+                BtnPictureName.Content = "Rasm tanlandi";
+            }
         }
     }
 }

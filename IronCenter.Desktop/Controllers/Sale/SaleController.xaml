@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              Background="Transparent" Margin="0"
              Loaded="UserControl_Loaded"
-             d:DesignHeight="35" Width="870"
+             d:DesignHeight="35" Width="945"
              
              HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch" >

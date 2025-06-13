@@ -14,6 +14,7 @@ using IronCenter.Desktop.Controllers;
 using System.Windows.Controls;
 using System.Windows.Media;
 using IronCenter.Desktop.Controllers.Categories;
+using System.IO;
 
 namespace IronCenter.Desktop.Windows.Categories
 {
@@ -70,7 +71,7 @@ namespace IronCenter.Desktop.Windows.Categories
                     if (result)
                     {
                         MessageBox.Show("Mahsulot muvaffaqiyatli o'chirildi!");
-
+                        File.Delete(category.ImagePath);
                         var parent = Controller.Parent as Panel;
                         if (parent != null)
                         {

@@ -77,12 +77,13 @@
             />
 
                                 <!-- Button for selecting image -->
-                                <Button Content="Rasm Tanlash" 
-                                        VerticalAlignment="Top" 
+                                <Button x:Name="BtnPitureName"
+                                    Content="Rasm tanlash" 
                                         Style="{DynamicResource CalSolveButton}"
-                                        Margin="10,40,10,0" Click="Button_Click"
                                         Foreground="White" FontSize="16" BorderBrush="White" 
                                         BorderThickness="2"
+                                        Margin="10,40,10,0"
+                                        Click="BtnPicture"
                                    />
                             </Grid>
                         </StackPanel>

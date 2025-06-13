@@ -30,7 +30,7 @@ namespace IronCenter.Desktop.Pages.Sales
         {
             await using (var dbContext = new AppDbContext())
             {
-                decimal USD = await IronCenter.Desktop.Helpers.GetUsdRate.GetUsdRateFromCbuAsync();
+                decimal USD = await IronCenter.Desktop.Helpers.GetUsdRate.UzGetUsdRateFromCbuAsync();
                 decimal income;
                 decimal benefit;
                 decimal damage;
@@ -93,7 +93,5 @@ namespace IronCenter.Desktop.Pages.Sales
             }
             ;
         }
-
-      
     }
 }

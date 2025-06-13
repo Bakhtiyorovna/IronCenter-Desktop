@@ -34,23 +34,15 @@ namespace IronCenter.Desktop.Pages.Categories
        
         public async Task Refresh()
         {
-            List<string> pictures = new List<string> { "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\CategoryImages\\maishiy.jpg",
-                "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\CategoryImages\\metallurgiya.jpg",
-                "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\CategoryImages\\elektronika.jpg" };
-
-
-            loader.Foreground = new SolidColorBrush(Colors.Transparent);
             await using (var dbContext = new AppDbContext())
             {
                 wrpCourses.Children.Clear();
 
                 var categories = await dbContext.Categories.ToListAsync();
                 long count = categories.Count;
-                int i = 0;
+
                 foreach (var category in categories.AsEnumerable().Reverse())
                 {
-                    category.ImagePath = pictures[i];
-                    i++;
                     txbProductCount.Text = count.ToString() + " ta kategoriya mavjud";
                     CategoryController Controller = new CategoryController(category);
                     Controller.SetData(category );
@@ -84,7 +76,6 @@ namespace IronCenter.Desktop.Pages.Categories
                 var searchQuery = TextBoxSearch.Text;
                 using (var dbContext = new AppDbContext())
                 {
-
                     var categories = await dbContext.Categories
                    .Where(p => EF.Functions.ILike(p.Name, $"%{searchQuery}%")
                             || EF.Functions.ILike(p.Description, $"%{searchQuery}%"))
@@ -94,7 +85,7 @@ namespace IronCenter.Desktop.Pages.Categories
                     wrpCourses.Children.Clear();
                     foreach (var category in categories)
                     {
-                        category.ImagePath = "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\CategoryImages\\metallurgiya.jpg";
+                        //category.ImagePath = "D:\\Proekts\\DotNet\\IronCenter-Desktop\\IronCenter.Desktop\\Assets\\Images\\CategoryImages\\metallurgiya.jpg";
 
                         CategoryController Controller = new CategoryController(category);
                         Controller.SetData(category);
